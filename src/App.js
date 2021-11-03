@@ -1,4 +1,3 @@
-import { Container } from "reactstrap";
 import Header from "./layout/Header/header";
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import "./App.css";
@@ -9,7 +8,7 @@ import News from "./pages/news/news";
 
 function App() {
     return (
-        <Container className="App">
+        <div className="App">
             <Router>
                 <Header />
                 <Switch>
@@ -20,7 +19,7 @@ function App() {
                     <Route path="/tintuc" component={News} />
                 </Switch>
             </Router>
-        </Container >
+        </div>
     );
 }
 
