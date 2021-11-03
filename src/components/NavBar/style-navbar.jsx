@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Navbar = styled.div`
-    ${props => props.dFlex('center', 'flex-end', 'none')};
+    ${props => props.theme.dFlex('center', 'flex-end', 'none')};
     height: 50%;
     padding: 2px;
     border: 1px solid #e00d7a;
@@ -10,7 +10,7 @@ export const Navbar = styled.div`
 `;
 
 export const UlNav = styled.ul`
-    ${props => props.dFlex('center', 'space-around', 'none')};
+    ${props => props.theme.dFlex('center', 'space-around', 'none')};
     height: 100%;
     width: 100%;
     margin-bottom: 0px;
@@ -29,7 +29,7 @@ export const LiNav = styled.li`
     transition: ease-in-out .2s;
     
     a {
-        ${props => props.dFlex('center', 'center', 'none')};
+        ${props => props.theme.dFlex('center', 'center', 'none')};
         width: 100%;
         height: 100%;
     }

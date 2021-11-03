@@ -5,6 +5,8 @@ import Movies from './pages/movies/movies'
 import Schedule from "./pages/schedule/schedule";
 import Promotion from "./pages/promotion/promotion";
 import News from "./pages/news/news";
+import Footer from "./layout/Footer/footer";
+import Contact from "./pages/contact/contact";
 
 function App() {
     return (
@@ -17,7 +19,9 @@ function App() {
                     <Route path="/lich" component={Schedule} />
                     <Route path="/khuyenmai" component={Promotion} />
                     <Route path="/tintuc" component={News} />
+                    <Route path="/lienhe" component={Contact} />
                 </Switch>
+                <Footer />
             </Router>
         </div>
     );
