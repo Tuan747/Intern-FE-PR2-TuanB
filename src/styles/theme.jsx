@@ -3,6 +3,8 @@ export const theme = {
     text_white: '#fff',
     text_black: '#000000',
     text_orange: '#F18720',
+    text_main: '#e00d7a',
+    text_error: 'red',
 
     bg_main: '#4E0045',
     bg_main_fading: '#542F50',
@@ -14,9 +16,12 @@ export const theme = {
 
     shadow_black_fading: '#00000033',
     shadow_black_img: '#2A1728',
+    shadow_yellow: '#FECF06',
 
     border_img: '#A896A6',
     border_white: '#fff',
+    border_yellow: '#fecf06',
+    border_form: '#fec',
 
     size_text_l: '12px',
     size_text_xl: '18px',

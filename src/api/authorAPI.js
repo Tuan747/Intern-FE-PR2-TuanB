@@ -1,0 +1,21 @@
+import axiosClient from './axiosClient'
+
+const authorAPI = {
+    getToken: (body) => {
+        const url = '/account/login'
+        return axiosClient.post(url, body)
+    },
+
+    getUSer: () => {
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+                'auth-token': localStorage.getItem('token')
+            }
+        }
+        const url = `/account/me`
+        return axiosClient.get(url, config)
+    },
+}
+
+export default authorAPI
