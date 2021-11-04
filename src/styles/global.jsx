@@ -20,6 +20,10 @@ const GlobalStyles = createGlobalStyle`
         border: none;
         outline: none;
     }
+
+    h2 {
+        margin: 0;
+    }
 `;
 
 export default GlobalStyles

@@ -1,5 +1,26 @@
-export const HOST_API = "http://localhost:4000";
+export const HOST_API = "https://naht-cinema-api.herokuapp.com";
+export const FETCH_DATA_SUCCESS = 200;
 export const PLACEHOLDER_SEARCH = "Tìm Kiếm...";
+export const MOVIES = {
+    title: {
+        now: 'Phim sắp chiếu',
+        comming: 'Phim đang chiếu'
+    },
+    status: {
+        now: 'now',
+        comming: 'comming'
+    },
+    trailer: 'Trailer',
+    byeTicket: 'Mua vé',
+    detail: {
+        line1: 'Khởi chiếu:',
+        line2: 'Thể loại:',
+        line3: 'Diễn viên:',
+        line4: 'Đạo diễn:',
+        line5: 'Đánh giá:',
+    }
+}
+export const ERROR_MESSAGE = "F5 lại trang!!!"
 export const NAVBAR_TITLE = {
     movies: 'Phim',
     schedule: 'Lịch',
