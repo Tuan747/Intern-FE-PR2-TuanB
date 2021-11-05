@@ -5,6 +5,7 @@ import logo from "./../../resourses/img/logo.png";
 import Search from '../../components/Search/search';
 import Navbar from '../../components/NavBar/navbar';
 import Carousel from '../../components/Carousel/carousel';
+import Author from '../../pages/author/author';
 
 function Header() {
     return (<>
@@ -19,6 +20,7 @@ function Header() {
                 </Col>
             </Row>
         </Container>
+        <Author />
         <Carousel />
     </>);
 }

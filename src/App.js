@@ -10,13 +10,26 @@ import Contact from "./pages/contact/contact";
 import DetailMovie from "./pages/movies/components/detailMovie/detailMovie";
 import Loading from "./components/Loading/loading";
 import ErrorMessage from "./components/ErrorMessage/errorMessage";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
     return (
         <div className="App">
+            <ToastContainer
+                position="top-right"
+                autoClose={1000}
+                hideProgressBar
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
+            <Loading />
             <Router>
                 <ErrorMessage />
-                <Loading />
                 <Header />
                 <Switch>
                     <Redirect exact from="/" to="/phim" />

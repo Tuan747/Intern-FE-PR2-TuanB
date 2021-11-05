@@ -21,6 +21,19 @@ export const MOVIES = {
     }
 }
 export const ERROR_MESSAGE = "F5 lại trang!!!"
+export const AUTHORS = {
+    register: 'Đăng ký thành viên',
+    login: 'Đăng nhập',
+    phone: '028 7300 8881',
+    success: 'Đăng nhập thành công',
+    error: 'Tài khoản không đúng',
+    not_found: 'Tài khoản không tồn tại',
+    not_empty: 'Không để trống',
+    user: {
+        infoUser: 'Thông tin cá nhân',
+        logOut: 'Đăng xuất',
+    }
+}
 export const NAVBAR_TITLE = {
     movies: 'Phim',
     schedule: 'Lịch',

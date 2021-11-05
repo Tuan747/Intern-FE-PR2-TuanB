@@ -14,6 +14,8 @@ const GlobalStyles = createGlobalStyle`
 
     ul {
         list-style-type: none !important;
+        padding-left: 0px;
+        margin-bottom: 0px;
     }
 
     input {

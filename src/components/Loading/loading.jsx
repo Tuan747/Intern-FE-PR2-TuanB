@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux';
 
 function Loading() {
     const { isLoading } = useSelector((state) => state.loading)
-    console.log(isLoading);
 
     return (
         <S.OverlayContainer style={{ display: isLoading ? 'block' : 'none' }}>
