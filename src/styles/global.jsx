@@ -23,7 +23,7 @@ const GlobalStyles = createGlobalStyle`
         outline: none;
     }
 
-    h2 {
+    h1, h2 {
         margin: 0;
     }
 `;

@@ -13,6 +13,7 @@ export const theme = {
     bg_black: '#000000',
     bg_orange: '#F18720',
     bg_white: '#fff',
+    bg_hover: '#BC92B1',
 
     shadow_black_fading: '#00000033',
     shadow_black_img: '#2A1728',
@@ -22,6 +23,7 @@ export const theme = {
     border_white: '#fff',
     border_yellow: '#fecf06',
     border_form: '#fec',
+    border_orange: '#F18720',
 
     size_text_l: '12px',
     size_text_xl: '18px',
