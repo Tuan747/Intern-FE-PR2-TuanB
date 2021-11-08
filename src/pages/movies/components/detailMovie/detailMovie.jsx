@@ -56,7 +56,7 @@ function DetailMovie() {
                                 <S.Rating theme={theme}>{handleShowRating}</S.Rating>
                             </S.Info>
                             <S.BtnTicket theme={theme} border={'30px 0 30px 30px'} bg={'#f18720'}>
-                                <NavLink to={`/byticket/${slug}`}>{MOVIES.byeTicket}</NavLink>
+                                <NavLink to={`/movietime/${slug}`}>{MOVIES.byeTicket}</NavLink>
                             </S.BtnTicket>
                         </S.ItemMovie>
                     </Col>

@@ -20,6 +20,11 @@ export const MOVIES = {
         line5: 'Đánh giá:',
     }
 }
+export const TICKET = {
+    theater: 'Chọn rạp',
+    date: 'Chọn ngày',
+    hours: 'Chọn Giờ',
+}
 export const ERROR_MESSAGE = "F5 lại trang!!!"
 export const AUTHORS = {
     register: 'Đăng ký thành viên',
