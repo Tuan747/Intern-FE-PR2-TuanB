@@ -5,12 +5,14 @@ import moviesReducer from './pages/movies/moviesSlice'
 import loadingReducer from './components/Loading/lodingSlice'
 import errorMessageReducer from './components/ErrorMessage/errorMessageSlice'
 import authorReducer from './pages/author/authorSlice'
+import ticketReducer from './pages/ticket/ticketSlice'
 
 const rootReducer = {
     movies: moviesReducer,
     loading: loadingReducer,
     errorMessage: errorMessageReducer,
     author: authorReducer,
+    ticket: ticketReducer,
 }
 
 const sagaMiddleware = createSagaMiddleware()
