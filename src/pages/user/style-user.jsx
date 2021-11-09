@@ -2,17 +2,20 @@ import styled from "styled-components";
 
 export const Avatar = styled.div`
     position: relative;
-    background: ${props => props.theme.bg_yellow};
-    width: 59px;
-    height: 59px;
-    border-radius: 100%;
     display: flex;
     cursor: pointer;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
 
     img {
-        width: 100%;
-        height: 100%;
+        background: ${props => props.theme.bg_yellow};
+        width: 59px;
+        height: 59px;
+        border-radius: 100%;
+    }
+
+    .name__user {
+        margin-left: 10px;
     }
 
     &:hover > ul{

@@ -3,8 +3,11 @@ import * as S from './style-navbar'
 import { theme } from '../../styles/theme'
 import { NAVBAR_TITLE } from '../../constants';
 import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 function Navbar() {
+    const { dataUser, isLogin } = useSelector((state) => state.author)
+
     return (
         <S.Navbar theme={theme}>
             <S.UlNav theme={theme}>
@@ -13,6 +16,7 @@ function Navbar() {
                 <S.LiNav theme={theme}><NavLink activeClassName="checked" to="/khuyenmai">{NAVBAR_TITLE.promotion}</NavLink></S.LiNav>
                 <S.LiNav theme={theme}><NavLink activeClassName="checked" to="/tintuc">{NAVBAR_TITLE.news}</NavLink></S.LiNav>
                 <S.LiNav theme={theme}><NavLink activeClassName="checked" to="/lienhe">{NAVBAR_TITLE.contact}</NavLink></S.LiNav>
+                {!dataUser.role && isLogin && <S.LiNav theme={theme}><NavLink activeClassName="checked" to="/quanly">{NAVBAR_TITLE.manager}</NavLink></S.LiNav>}
             </S.UlNav>
         </S.Navbar>
     );

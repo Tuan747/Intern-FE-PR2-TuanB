@@ -13,6 +13,7 @@ import ErrorMessage from "./components/ErrorMessage/errorMessage";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Ticket from "./pages/ticket/ticket";
+import Manager from "./pages/manager/manager";
 
 function App() {
     return (
@@ -41,6 +42,7 @@ function App() {
                     <Route exact path="/lienhe" component={Contact} />
                     <Route exact path="/detailphim/:slug" component={DetailMovie} />
                     <Route exact path="/movietime/:slug" component={Ticket} />
+                    <Route exact path="/quanly" component={Manager} />
                 </Switch>
                 <Footer />
             </Router>

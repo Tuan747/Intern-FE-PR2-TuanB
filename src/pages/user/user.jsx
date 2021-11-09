@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Col } from 'reactstrap';
 import * as S from './style-user'
 import user from '../../resourses/img/use.png'
@@ -9,6 +9,7 @@ import { AUTHORS } from '../../constants';
 
 function User({ onToggleLogin }) {
     const dispatch = useDispatch()
+    const { dataUser } = useSelector((state) => state.author)
 
     const handleLogOut = () => {
         localStorage.clear()
@@ -17,9 +18,10 @@ function User({ onToggleLogin }) {
     }
 
     return (
-        <Col lg={6}>
+        <Col lg={2}>
             <S.Avatar theme={theme}>
-                <img src={user} alt="avatar" />
+                <img src={user} alt="avatar" theme={theme} />
+                <div className="name__user">{dataUser.name}</div>
                 <S.Option theme={theme}>
                     <li>{AUTHORS.user.infoUser}</li>
                     <li onClick={handleLogOut}>{AUTHORS.user.logOut}</li>

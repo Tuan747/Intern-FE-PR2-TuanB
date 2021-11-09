@@ -7,6 +7,8 @@ import errorMessageReducer from './components/ErrorMessage/errorMessageSlice'
 import authorReducer from './pages/author/authorSlice'
 import ticketReducer from './pages/ticket/ticketSlice'
 import paymentReducer from './pages/ticket/components/InfoPayment/InfoPaymentSlice'
+import adminReducer from './pages/manager/managerSlice'
+import paginationReducer from './components/Pagination/pagiSlice'
 
 const rootReducer = {
     movies: moviesReducer,
@@ -15,6 +17,8 @@ const rootReducer = {
     author: authorReducer,
     ticket: ticketReducer,
     payment: paymentReducer,
+    manager: adminReducer,
+    pagination: paginationReducer,
 }
 
 const sagaMiddleware = createSagaMiddleware()
