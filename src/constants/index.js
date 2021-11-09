@@ -25,7 +25,24 @@ export const TICKET = {
     date: 'Chọn ngày',
     hours: 'Chọn Giờ',
     requiredGetSeats: 'Hãy chọn rạp, ngày, giờ để hiển thị suất chiếu',
+    seat_disabled: 'Ghế đã chọn',
+    seat_available: 'Ghế chưa chọn',
+    seat_selected: 'Ghế đang chọn',
+    titlePayment: 'Thông tin vé',
+    minute: 'phút',
+    seat: 'Ghế',
+    unit_price: 'Đơn giá vé',
+    quantity: 'Số lượng vé',
+    total: 'Tổng tiền',
+    methodPayment: 'Phương thức thanh toán',
+    select: 'Chọn',
+    unit_VND: 'VND',
+    gift: 'Mã giảm giá',
+    add_gift: 'Chọn mã giảm giá',
+    btn: 'Mua',
+    required_method: 'Yêu cầu chọn phương thức thanh toán'
 }
+export const METHOD_PAYMENT_MOMO = 'Momo'
 export const ERROR_MESSAGE = "F5 lại trang!!!"
 export const AUTHORS = {
     register: 'Đăng ký thành viên',
@@ -35,6 +52,7 @@ export const AUTHORS = {
     error: 'Tài khoản không đúng',
     not_found: 'Tài khoản không tồn tại',
     not_empty: 'Không để trống',
+    required_login: 'Bạn cần đăng nhập',
     user: {
         infoUser: 'Thông tin cá nhân',
         logOut: 'Đăng xuất',

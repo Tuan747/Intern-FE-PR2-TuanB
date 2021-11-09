@@ -26,6 +26,10 @@ const GlobalStyles = createGlobalStyle`
     h1, h2 {
         margin: 0;
     }
+
+    button {
+        border: none;
+    }
 `;
 
 export default GlobalStyles

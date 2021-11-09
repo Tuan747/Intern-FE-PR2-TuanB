@@ -6,6 +6,7 @@ import loadingReducer from './components/Loading/lodingSlice'
 import errorMessageReducer from './components/ErrorMessage/errorMessageSlice'
 import authorReducer from './pages/author/authorSlice'
 import ticketReducer from './pages/ticket/ticketSlice'
+import paymentReducer from './pages/ticket/components/InfoPayment/InfoPaymentSlice'
 
 const rootReducer = {
     movies: moviesReducer,
@@ -13,6 +14,7 @@ const rootReducer = {
     errorMessage: errorMessageReducer,
     author: authorReducer,
     ticket: ticketReducer,
+    payment: paymentReducer,
 }
 
 const sagaMiddleware = createSagaMiddleware()
