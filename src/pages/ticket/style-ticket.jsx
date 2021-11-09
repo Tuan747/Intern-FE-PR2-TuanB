@@ -9,6 +9,7 @@ export const TimeMovie = styled.div`
         border-radius: 30px 0px 30px 0px;
         background: ${props => props.theme.bg_main_fading};
         transition: ease-in-out .2s;
+        margin-bottom: 25px;
 
         &:hover {
             background: ${props => props.theme.bg_main};

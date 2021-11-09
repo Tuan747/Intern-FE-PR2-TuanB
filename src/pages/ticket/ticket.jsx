@@ -1,22 +1,80 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import { Col, Container, DropdownItem, DropdownMenu, DropdownToggle, Row, UncontrolledDropdown } from 'reactstrap';
 import { TICKET } from '../../constants';
 import { theme } from '../../styles/theme';
 import { getSlug } from '../movies/moviesSlice';
+import Seats from './components/seats/seats';
 import * as S from './style-ticket';
+import { getIdMovies, getIdTheater, getTheater, getDates, getHours, getIdDate, resetHours, resetDate, getIdHours, getSeats, resetSeats } from './ticketSlice';
 
 function Ticket() {
     const params = useParams()
     const dispatch = useDispatch()
-    const { detailMovie } = useSelector((state) => state.movies)
+    const { image, name, _id } = useSelector((state) => state.movies.detailMovie)
+    const { allTheater, allDates, allHours, idTheater, idDate, idHours } = useSelector((state) => state.ticket)
+    const [nameTheater, setNameTheater] = useState()
+    const [nameDates, setNameDates] = useState()
+    const [nameHour, setNameHour] = useState()
 
+    // run to get first data
     useEffect(() => {
         dispatch(getSlug(params.slug))
-    }, [dispatch, params.slug])
+        dispatch(getTheater())
+        dispatch(getIdMovies(_id))
+    }, [dispatch, params.slug, _id])
 
-    const { image, name } = detailMovie
+    const handleClickTheater = (id, name) => {
+        setNameTheater(name)
+        if (idTheater !== id) {
+            dispatch(getIdTheater(id))
+            dispatch(resetHours())
+            dispatch(resetDate())
+            dispatch(resetSeats())
+            dispatch(getDates()) // run to get dataDate = idMovie + idTheater
+        } else {
+            dispatch(getIdTheater(id))
+        }
+    }
+
+    const handleClickDates = (name) => {
+        setNameDates(name)
+        if (idDate !== name) {
+            dispatch(getIdDate(name))
+            dispatch(resetHours())
+            dispatch(resetSeats())
+            dispatch(getHours()) // run to get hours = idMovie + idTheater + idDate
+        } else {
+            dispatch(getIdDate(name))
+        }
+    }
+
+    const handleClickHours = (name) => {
+        setNameHour(name)
+        if (idHours !== name) {
+            dispatch(getIdHours(name))
+            dispatch(resetSeats())
+            dispatch(getSeats()) // run to get seats = idMovie + idTheater + idDate + idHours
+        } else {
+            dispatch(getIdHours(name))
+        }
+    }
+
+    const theaterRender =
+        allTheater.length ? allTheater.map((theater, i) => (
+            <DropdownItem key={i} onClick={() => handleClickTheater(theater._id, theater.name)}>{theater.name}</DropdownItem>
+        )) : ''
+
+    const datesRender =
+        allDates.length ? allDates.map((date, i) => (
+            <DropdownItem key={i} onClick={() => handleClickDates(date)}>{new Date(date).toLocaleDateString()}</DropdownItem>
+        )) : ''
+
+    const hoursRender =
+        allHours.length ? allHours.map((hour, i) => (
+            <DropdownItem key={i} onClick={() => handleClickHours(hour)}>{hour}</DropdownItem>
+        )) : ''
 
     return (
         <S.TimeMovie theme={theme}>
@@ -31,35 +89,37 @@ function Ticket() {
                             <Col lg={4}>
                                 <UncontrolledDropdown>
                                     <DropdownToggle caret theme={theme}>
-                                        {TICKET.theater}
+                                        {idTheater ? nameTheater : TICKET.theater}
                                     </DropdownToggle>
                                     <DropdownMenu>
-                                        <DropdownItem>rap1</DropdownItem>
-                                        <DropdownItem>rap2</DropdownItem>
+                                        {theaterRender}
                                     </DropdownMenu>
                                 </UncontrolledDropdown>
                             </Col>
                             <Col lg={4}>
                                 <UncontrolledDropdown>
                                     <DropdownToggle caret>
-                                        {TICKET.date}
+                                        {idDate ? new Date(nameDates).toLocaleDateString() : TICKET.date}
                                     </DropdownToggle>
                                     <DropdownMenu>
-                                        <DropdownItem>ngay1</DropdownItem>
-                                        <DropdownItem>ngay2</DropdownItem>
+                                        {datesRender}
                                     </DropdownMenu>
                                 </UncontrolledDropdown>
                             </Col>
                             <Col lg={4}>
                                 <UncontrolledDropdown>
                                     <DropdownToggle caret>
-                                        {TICKET.hours}
+                                        {idHours ? nameHour : TICKET.hours}
                                     </DropdownToggle>
                                     <DropdownMenu>
-                                        <DropdownItem>gio1</DropdownItem>
-                                        <DropdownItem>gio2</DropdownItem>
+                                        {hoursRender}
                                     </DropdownMenu>
                                 </UncontrolledDropdown>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col lg={12}>
+                                {idHours ? <Seats /> : <>{TICKET.requiredGetSeats}</>}
                             </Col>
                         </Row>
                     </Col>

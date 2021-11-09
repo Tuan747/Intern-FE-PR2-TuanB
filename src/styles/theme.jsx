@@ -14,6 +14,9 @@ export const theme = {
     bg_orange: '#F18720',
     bg_white: '#fff',
     bg_hover: '#BC92B1',
+    bg_available_seat: '#E00D7A',
+    bg_disabled_seat: '#c5bebe',
+    bg_selected_seat: '#4E0045',
 
     shadow_black_fading: '#00000033',
     shadow_black_img: '#2A1728',

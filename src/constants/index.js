@@ -24,6 +24,7 @@ export const TICKET = {
     theater: 'Chọn rạp',
     date: 'Chọn ngày',
     hours: 'Chọn Giờ',
+    requiredGetSeats: 'Hãy chọn rạp, ngày, giờ để hiển thị suất chiếu',
 }
 export const ERROR_MESSAGE = "F5 lại trang!!!"
 export const AUTHORS = {
