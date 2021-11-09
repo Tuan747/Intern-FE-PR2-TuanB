@@ -119,7 +119,7 @@ function Ticket() {
                         </Row>
                         <Row>
                             <Col lg={12}>
-                                {idHours ? <Seats /> : <>{TICKET.requiredGetSeats}</>}
+                                {(idHours && <Seats nameTheater={nameTheater} />) || <>{TICKET.requiredGetSeats}</>}
                             </Col>
                         </Row>
                     </Col>

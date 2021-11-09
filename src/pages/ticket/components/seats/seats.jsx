@@ -5,8 +5,10 @@ import * as S from './style-seats'
 import classNames from 'classnames';
 import { theme } from '../../../../styles/theme';
 import { getSeatsSelect, removeSeatsSelect } from '../../ticketSlice';
+import InfoPayment from '../InfoPayment/InfoPayment';
+import { TICKET } from '../../../../constants';
 
-function Seats() {
+function Seats({ nameTheater }) {
     const dispatch = useDispatch()
     const allSeats = useSelector((state) => state.ticket.allSeats.movietime)
     const { seatSelect } = useSelector((state) => state.ticket)
@@ -48,11 +50,29 @@ function Seats() {
             )
         })
 
-    return (
+    return (<>
         <S.SeatContainer theme={theme}>
             {handleShowSeats}
         </S.SeatContainer>
-    );
+        <S.Desc>
+            <Row>
+                <Col lg={4}>
+                    <S.DescBox bg={'#c5bebe'} />
+                    <S.DescText theme={theme}>{TICKET.seat_disabled}</S.DescText>
+                </Col>
+                <Col lg={4}>
+                    <S.DescBox bg={'#E00D7A'} />
+                    <S.DescText theme={theme}>{TICKET.seat_available}</S.DescText>
+                </Col>
+                <Col lg={4}>
+                    <S.DescBox bg={'#4E0045'} />
+                    <S.DescText theme={theme}>{TICKET.seat_selected}</S.DescText>
+                </Col>
+            </Row>
+        </S.Desc>
+        {(seatSelect.length && <InfoPayment nameTheater={nameTheater} />) || ''}
+
+    </>);
 }
 
 export default Seats;

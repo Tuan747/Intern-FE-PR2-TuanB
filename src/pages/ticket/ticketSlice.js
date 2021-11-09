@@ -12,7 +12,9 @@ const ticket = createSlice({
         idHours: null,
         allSeats: [],
         seatSelect: [],
+        number_ticket: 0,
         price: 0,
+        gift_code: null,
         error: null
     },
     reducers: {
@@ -89,6 +91,15 @@ const ticket = createSlice({
                 ...state,
                 seatSelect: [...state.seatSelect, action.payload.seat],
                 price: state.price + action.payload.price,
+                number_ticket: state.number_ticket + 1
+            }
+        },
+
+        addGift: (state, action) => {
+            return {
+                ...state,
+                gift_code: action.payload,
+                price: (state.number_ticket * action.payload.price) - action.payload.gift.value,
             }
         },
 
@@ -97,6 +108,7 @@ const ticket = createSlice({
                 ...state,
                 seatSelect: [...state.seatSelect.filter(seat => seat !== action.payload.seat)],
                 price: state.price - action.payload.price,
+                number_ticket: state.number_ticket - 1
             }
         },
 
@@ -122,6 +134,7 @@ const ticket = createSlice({
                 allSeats: [],
                 seatSelect: [],
                 price: 0,
+                number_ticket: 0,
             }
         },
 
@@ -151,6 +164,7 @@ export const {
     getSeats,
     getAllSeats,
     getSeatsSelect,
+    addGift,
     removeSeatsSelect,
     resetHours,
     resetDate,

@@ -32,3 +32,24 @@ export const SeatSelect = styled.div`
         background: ${props => props.theme.bg_main_fading};
     }
 `;
+
+export const Desc = styled.div`
+    margin: 25px 0;
+    background: #F18720;
+    border: 5px solid #7C2665;
+    width: 100%;
+    padding: 20px;
+    border-radius: 20px;
+`;
+
+export const DescBox = styled.span`
+    display: inline-block; 
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: ${props => props.bg};
+`;
+
+export const DescText = styled.div`
+    font-size: ${props => props.theme.size_text_xl}
+`;
