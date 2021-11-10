@@ -14,6 +14,12 @@ const manager = createSlice({
         },
         managerMovies: {
             movies: [],
+            moviesNumberPlaying: 0,
+            moviesNumberComming: 0,
+            moviesNumberTotal: 0,
+            messagesAddSuccess: null,
+            messagesEditSuccess: null,
+            messagesDeleteSuccess: null,
         },
         error: null,
     },
@@ -25,8 +31,7 @@ const manager = createSlice({
             }
         },
 
-        getUser: () => {
-        },
+        getUser: () => { },
 
         getAllUser: (state, action) => {
             return {
@@ -38,8 +43,7 @@ const manager = createSlice({
             }
         },
 
-        getUserWeek: () => {
-        },
+        getUserWeek: () => { },
 
         getNumberUserWeek: (state, action) => {
             return {
@@ -51,8 +55,7 @@ const manager = createSlice({
             }
         },
 
-        getUserMonth: () => {
-        },
+        getUserMonth: () => { },
 
         getNumberUserMonth: (state, action) => {
             return {
@@ -64,8 +67,7 @@ const manager = createSlice({
             }
         },
 
-        getUserYear: () => {
-        },
+        getUserYear: () => { },
 
         getNumberUserYear: (state, action) => {
             return {
@@ -77,8 +79,7 @@ const manager = createSlice({
             }
         },
 
-        deleteUser: () => {
-        },
+        deleteUser: () => { },
 
         getStatusDeletesUser: (state, action) => {
             return {
@@ -106,7 +107,100 @@ const manager = createSlice({
             return {
                 ...state,
                 managerMovies: {
+                    ...state.managerMovies,
                     movies: action.payload
+                }
+            }
+        },
+
+        getMoviesPlaying: () => { },
+
+        getNumberMoviesPlaying: (state, action) => {
+            return {
+                ...state,
+                managerMovies: {
+                    ...state.managerMovies,
+                    moviesNumberPlaying: action.payload
+                }
+            }
+        },
+
+        getMoviesComming: () => { },
+
+        getNumberMoviesComming: (state, action) => {
+            return {
+                ...state,
+                managerMovies: {
+                    ...state.managerMovies,
+                    moviesNumberComming: action.payload
+                }
+            }
+        },
+
+        getMoviesTotal: () => { },
+
+        getNumberMoviesTotal: (state, action) => {
+            return {
+                ...state,
+                managerMovies: {
+                    ...state.managerMovies,
+                    moviesNumberTotal: action.payload
+                }
+            }
+        },
+
+        newMovie: () => { },
+
+        getMessageAddSuccess: (state, action) => {
+            return {
+                ...state,
+                managerMovies: {
+                    ...state.managerMovies,
+                    messagesAddSuccess: action.payload
+                }
+            }
+        },
+
+        clearStatusNewMovie: (state, action) => {
+            return {
+                ...state,
+                managerMovies: {
+                    ...state.managerMovies,
+                    messagesAddSuccess: null
+                }
+            }
+        },
+
+        editMovie: () => { },
+
+        getMessageEditSuccess: (state, action) => {
+            return {
+                ...state,
+                managerMovies: {
+                    ...state.managerMovies,
+                    messagesEditSuccess: action.payload
+                }
+            }
+        },
+
+        clearStatusEditMovie: (state, action) => {
+            return {
+                ...state,
+                managerMovies: {
+                    ...state.managerMovies,
+                    messagesEditSuccess: null
+                }
+            }
+        },
+
+        deleteMove: () => { },
+
+        getMessageDeleteSuccess: (state, action) => {
+            return {
+                ...state,
+                managerMovies: {
+                    ...state.managerMovies,
+                    messagesDeleteSuccess: action.payload
                 }
             }
         },
@@ -137,6 +231,20 @@ export const {
     clearStatusDeleteUser,
     getMovies,
     getAllMovies,
+    getNumberMoviesTotal,
+    getMoviesTotal,
+    getNumberMoviesComming,
+    getMoviesComming,
+    getNumberMoviesPlaying,
+    getMoviesPlaying,
+    newMovie,
+    getMessageAddSuccess,
+    clearStatusNewMovie,
+    editMovie,
+    getMessageEditSuccess,
+    clearStatusEditMovie,
+    deleteMove,
+    getMessageDeleteSuccess,
     getErrors,
 } = actions;
 export default reducer;

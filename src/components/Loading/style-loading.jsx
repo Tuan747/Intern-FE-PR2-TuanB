@@ -7,7 +7,7 @@ export const Loading = styled.div`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 9999;
+    z-index: 9999999999999;
 
     div {
         display: inline-block;
@@ -17,6 +17,7 @@ export const Loading = styled.div`
         border-radius: 50%;
         background: ${props => props.theme.bg_white};
         animation: lds-circle 2.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+        z-index: 9999999999999;
     }
 
     @keyframes lds-circle {
@@ -41,5 +42,5 @@ export const OverlayContainer = styled.div`
     height: 100vh;
     background: #5b085a79;
     position: fixed;
-    z-index: 99;
+    z-index: 9999999999999;
 `;

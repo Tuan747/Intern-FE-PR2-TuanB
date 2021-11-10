@@ -8,9 +8,10 @@ import { Col, Row, Table } from 'reactstrap';
 import PaginationNumber from '../../../../components/Pagination/Pagination';
 import { MANAGER, TAB_ADMIN_USER } from '../../../../constants';
 import { theme } from '../../../../styles/theme';
-import { clearStatusDeleteUser, deleteUser, getUser, getUserMonth, getUserWeek, getUserYear } from '../../managerSlice';
+import { clearStatusDeleteUser, getUser, getUserMonth, getUserWeek, getUserYear } from '../../managerSlice';
 import { getNewTotalPages } from '../../../../components/Pagination/pagiSlice'
 import * as S from './style-managerUser'
+import Delete from './components/delete/delete';
 
 function ManagerUser({ tabChange }) {
     const dispatch = useDispatch()
@@ -41,15 +42,11 @@ function ManagerUser({ tabChange }) {
                     <td>{new Date(date).toLocaleDateString()}</td>
                     <td>{email}</td>
                     <td>
-                        <S.BtnDelete theme={theme} onClick={() => handleDeleteUser(_id)}>{MANAGER.user.table_btn_delete}</S.BtnDelete>
+                        <Delete id={_id} name={name} />
                     </td>
                 </tr>
             )
         })
-
-    const handleDeleteUser = (idUser) => {
-        dispatch(deleteUser(idUser))
-    }
 
     return (
         <S.ManagerUser theme={theme} style={{ display: TAB_ADMIN_USER === tabChange ? 'block' : 'none' }}>
