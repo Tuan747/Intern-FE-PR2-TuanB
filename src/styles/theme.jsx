@@ -17,6 +17,7 @@ export const theme = {
     bg_available_seat: '#E00D7A',
     bg_disabled_seat: '#c5bebe',
     bg_selected_seat: '#4E0045',
+    bg_box_manager_user: '#27293D',
 
     shadow_black_fading: '#00000033',
     shadow_black_img: '#2A1728',
@@ -32,6 +33,7 @@ export const theme = {
     size_text_xl: '18px',
     size_text_2xl: '20px',
     size_text_3xl: '22px',
+    size_text_4xl: '30px',
 
     dFlex: function ($align, $justify, $direction) {
         return `

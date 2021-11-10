@@ -42,6 +42,25 @@ export const TICKET = {
     btn: 'Mua',
     required_method: 'Yêu cầu chọn phương thức thanh toán'
 }
+export const MANAGER = {
+    user: {
+        table_no: 'No',
+        table_name: 'Tên',
+        table_date: 'Ngày sinh',
+        table_email: 'Email',
+        table_btn_delete: 'Xóa',
+        title: 'Thống kê người dùng',
+        title_week: 'Đã tạo trong tuần này',
+        title_month: 'Đã tạo trong tháng này',
+        title_year: 'Đã tạo trong năm này',
+    }
+}
+export const TAB_ADMIN_MOVIE = 'ADMIN_MOVIE'
+export const TAB_ADMIN_USER = 'ADMIN_USER'
+export const TAB_ADMIN_GIFT = 'ADMIN_GIFT'
+export const TAB_ADMIN_MOVIETIME = 'ADMIN_MOVIETIME'
+export const TAB_ADMIN_REVENUE = 'ADMIN_REVENUE'
+
 export const METHOD_PAYMENT_MOMO = 'Momo'
 export const ERROR_MESSAGE = "F5 lại trang!!!"
 export const AUTHORS = {
@@ -64,6 +83,7 @@ export const NAVBAR_TITLE = {
     promotion: 'Khuyến mãi',
     news: 'Tin Tức',
     contact: 'Liên hệ',
+    manager: 'Quản lý',
 };
 export const FOOTER = {
     line1: "CÔNG TY CỔ PHẦN GIẢI TRÍ PHÁT HÀNH PHIM – RẠP CHIẾU PHIM NGÔI SAO",
