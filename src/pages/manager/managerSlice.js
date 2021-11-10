@@ -12,6 +12,9 @@ const manager = createSlice({
             userNumberInYear: 0,
             deleteStatus: null,
         },
+        managerMovies: {
+            movies: [],
+        },
         error: null,
     },
     reducers: {
@@ -97,6 +100,17 @@ const manager = createSlice({
             }
         },
 
+        getMovies: () => { },
+
+        getAllMovies: (state, action) => {
+            return {
+                ...state,
+                managerMovies: {
+                    movies: action.payload
+                }
+            }
+        },
+
         getErrors: (state, action) => {
             return {
                 ...state,
@@ -121,6 +135,8 @@ export const {
     deleteUser,
     getStatusDeletesUser,
     clearStatusDeleteUser,
+    getMovies,
+    getAllMovies,
     getErrors,
 } = actions;
 export default reducer;
