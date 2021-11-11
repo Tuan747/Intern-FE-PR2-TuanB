@@ -13,15 +13,16 @@ import ManagerUser from './components/managerUser/managerUser';
 import ManagerMovies from './components/managerMovies/managerMovies';
 import ManagerMovieTime from './components/managerMovieTime/managerMovieTime';
 import ManagerGift from './components/managerGift/managerGift';
+import { clearPage } from '../../components/Pagination/pagiSlice';
 
 function Manager() {
-
     const dispatch = useDispatch()
     const [tabChange, setTabChange] = useState(TAB_ADMIN_USER)
     const { tab } = useSelector((state) => state.manager)
 
     const handleChangeNewTab = (tab) => {
         setTabChange(tab)
+        dispatch(clearPage())
         dispatch(getNewTab(tab))
     }
 

@@ -46,9 +46,14 @@ export const Icon = styled.div`
 `;
 
 export const BtnDelete = styled.button`
+    font-size: ${props => props.theme.size_text_l};
     width: 100%;
     border-radius: 22px;
     transition: ease-in-out .2s;
+    
+    &:not(:last-child) {
+        margin-bottom: 5px;
+    }
 
     &:hover {
         background: ${props => props.theme.bg_available_seat};

@@ -53,6 +53,18 @@ export const MANAGER = {
         title_week: 'Đã tạo trong tuần này',
         title_month: 'Đã tạo trong tháng này',
         title_year: 'Đã tạo trong năm này',
+    },
+    movies: {
+        title: 'Thống kê phim',
+        nowMoviesTitle: 'Số lượng phim đang chiếu',
+        commingMoviesTitle: 'Số lượng phim sắp chiếu',
+        totalMovies: 'Số lượng tất cả phim',
+        table_no: 'No',
+        table_name: 'Tên phim',
+        table_date: 'Ngày khởi chiếu',
+        table_length: 'Độ dài',
+        table_status: 'Đang chiếu',
+        table_action: 'Hành động',
     }
 }
 export const TAB_ADMIN_MOVIE = 'ADMIN_MOVIE'
@@ -60,7 +72,6 @@ export const TAB_ADMIN_USER = 'ADMIN_USER'
 export const TAB_ADMIN_GIFT = 'ADMIN_GIFT'
 export const TAB_ADMIN_MOVIETIME = 'ADMIN_MOVIETIME'
 export const TAB_ADMIN_REVENUE = 'ADMIN_REVENUE'
-
 export const METHOD_PAYMENT_MOMO = 'Momo'
 export const ERROR_MESSAGE = "F5 lại trang!!!"
 export const AUTHORS = {
