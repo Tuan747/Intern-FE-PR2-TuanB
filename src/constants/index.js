@@ -1,10 +1,11 @@
 export const HOST_API = "https://naht-cinema-api.herokuapp.com";
 export const FETCH_DATA_SUCCESS = 200;
+export const FETCH_DATA_ERROR = 201;
 export const PLACEHOLDER_SEARCH = "Tìm Kiếm...";
 export const MOVIES = {
     title: {
-        now: 'Phim sắp chiếu',
-        comming: 'Phim đang chiếu'
+        comming: 'Phim sắp chiếu',
+        now: 'Phim đang chiếu'
     },
     status: {
         now: 'now',
@@ -53,6 +54,10 @@ export const MANAGER = {
         title_week: 'Đã tạo trong tuần này',
         title_month: 'Đã tạo trong tháng này',
         title_year: 'Đã tạo trong năm này',
+        question_delete_1: 'Bạn có muốn xóa người dùng',
+        question_delete_2: 'không ?',
+        btn_yes: 'Có',
+        btn_close: 'Đóng',
     },
     movies: {
         title: 'Thống kê phim',
@@ -65,6 +70,42 @@ export const MANAGER = {
         table_length: 'Độ dài',
         table_status: 'Đang chiếu',
         table_action: 'Hành động',
+        notify_error_date: 'Nhập lại ngày kết thúc phải lớn hơn ngày bắt đầu',
+        notify_error_video: 'Video sai định dạng',
+        notify_error_img: 'Ảnh không đúng',
+        notify_add_success: 'Tạo thành công',
+        notify_add_error: 'Tạo không thành công',
+        title_add_movie: 'Thêm phim',
+        title_add_desc: 'Mô tả',
+        title_add_director: 'Đạo diễn',
+        title_add_actor: 'Diễn viên',
+        title_add_start_date: 'Ngày khởi chiếu',
+        title_add_start_end: 'Ngày kết thúc',
+        title_add_language: 'Ngôn ngữ',
+        title_add_type: 'Thể loại',
+        title_add_lenth: 'Độ dài phim',
+        title_add_rating: 'Đánh giá',
+        title_add_trailer: 'Trailer',
+        title_add_img: 'Chọn ảnh',
+        title_add_status: 'Trạng thái',
+        notify_error_name: 'Nhập tên phim',
+        notify_error_desc: 'Nhập Mô tả',
+        notify_error_director: 'Nhập Đạo diễn',
+        notify_error_actor: 'Nhập Diễn viên',
+        notify_error_start_date: 'Nhập Ngày khởi chiếu',
+        notify_error_start_end: 'Nhập Ngày kết thúc',
+        notify_error_language: 'Nhập Ngôn ngữ',
+        notify_error_type: 'Nhập Thể loại',
+        notify_error_lenth: 'Nhập Độ dài phim',
+        notify_error_rating: 'Nhập Đánh giá',
+        notify_error_trailer: 'Nhập Trailer',
+        notify_error_stauts: 'Nhập Trạng thái',
+        btn_create: 'Tạo mới',
+        btn_yes: 'Có',
+        btn_close: 'Đóng',
+        question_delete_1: 'Bạn có muốn xóa phim',
+        question_delete_2: 'không ?',
+        title_edit: 'Chỉnh Sửa phim'
     }
 }
 export const TAB_ADMIN_MOVIE = 'ADMIN_MOVIE'

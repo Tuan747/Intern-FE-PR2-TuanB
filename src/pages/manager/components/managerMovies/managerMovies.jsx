@@ -1,4 +1,4 @@
-import { faEllipsisV, faPlusCircle, faVideo } from '@fortawesome/free-solid-svg-icons';
+import { faEllipsisV, faVideo } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect } from 'react';
 import { Col, Row, Table } from 'reactstrap';
@@ -8,22 +8,30 @@ import * as S from './style-managerMovies';
 import * as F from '../managerUser/style-managerUser';
 import PaginationNumber from '../../../../components/Pagination/Pagination';
 import { useDispatch, useSelector } from 'react-redux';
-import { getMovies } from '../../managerSlice';
+import { getMovies, getMoviesComming, getMoviesPlaying, getMoviesTotal } from '../../managerSlice';
+import Delete from './components/delete/delete';
+import Edit from './components/edit/edit';
+import Add from './components/add/add';
+import { getNewTotalPages } from '../../../../components/Pagination/pagiSlice';
 
 function ManagerMovies({ tabChange }) {
     const dispatch = useDispatch()
-    const { movies } = useSelector((state) => state.manager.managerMovies)
+    const { movies, moviesNumberPlaying, moviesNumberComming, moviesNumberTotal } = useSelector((state) => state.manager.managerMovies)
     const { limit, page } = useSelector(state => state.pagination)
 
     useEffect(() => {
         if (tabChange === TAB_ADMIN_MOVIE) {
             dispatch(getMovies())
+            dispatch(getMoviesPlaying())
+            dispatch(getMoviesComming())
+            dispatch(getMoviesTotal())
+            dispatch(getNewTotalPages(movies.total))
         }
-    }, [dispatch, tabChange, limit, page])
+    }, [dispatch, tabChange, limit, page, movies.total])
 
     const handleShowUser =
         movies.movie?.length && movies.movie.map((item, index) => {
-            const { name, date, length, _id, playing } = item
+            const { name, date, length, playing, _id } = item
             return (
                 <tr key={index}>
                     <th scope="row">{index + 1}</th>
@@ -34,8 +42,8 @@ function ManagerMovies({ tabChange }) {
                     <td className='select'>
                         <FontAwesomeIcon icon={faEllipsisV} />
                         <div className='option'>
-                            <F.BtnDelete theme={theme}>Chỉnh Sửa</F.BtnDelete>
-                            <F.BtnDelete theme={theme}>{MANAGER.user.table_btn_delete}</F.BtnDelete>
+                            <Edit movie={item} />
+                            <Delete id={_id} name={name} />
                         </div>
                     </td>
                 </tr>
@@ -45,11 +53,7 @@ function ManagerMovies({ tabChange }) {
     return (
         <S.ManagerMovies theme={theme} style={{ display: TAB_ADMIN_MOVIE === tabChange ? 'block' : 'none' }} >
             <h1>{MANAGER.movies.title}</h1>
-            <S.AddMovies>
-                <FontAwesomeIcon icon={faPlusCircle} />
-                <span>Them phim</span>
-            </S.AddMovies>
-
+            <Add />
             <Row>
                 <Col lg={4}>
                     <F.ContentBox theme={theme}>
@@ -58,7 +62,7 @@ function ManagerMovies({ tabChange }) {
                             <F.Icon>
                                 <FontAwesomeIcon icon={faVideo} />
                             </F.Icon>
-                            <span>+10</span>
+                            <span>+{moviesNumberPlaying}</span>
                         </F.NumberBox>
                     </F.ContentBox>
                 </Col>
@@ -69,7 +73,7 @@ function ManagerMovies({ tabChange }) {
                             <F.Icon>
                                 <FontAwesomeIcon icon={faVideo} />
                             </F.Icon>
-                            <span>+10</span>
+                            <span>+{moviesNumberComming}</span>
                         </F.NumberBox>
                     </F.ContentBox>
                 </Col>
@@ -80,7 +84,7 @@ function ManagerMovies({ tabChange }) {
                             <F.Icon>
                                 <FontAwesomeIcon icon={faVideo} />
                             </F.Icon>
-                            <span>+10</span>
+                            <span>+{moviesNumberTotal}</span>
                         </F.NumberBox>
                     </F.ContentBox>
                 </Col>
@@ -91,7 +95,7 @@ function ManagerMovies({ tabChange }) {
                         <th>{MANAGER.movies.table_no}</th>
                         <th>{MANAGER.movies.table_name}</th>
                         <th>{MANAGER.movies.table_date}</th>
-                        <th>{MANAGER.movies.table_length} (phut)</th>
+                        <th>{MANAGER.movies.table_length} (Phút)</th>
                         <th>{MANAGER.movies.table_status}</th>
                         <th>{MANAGER.movies.table_action}</th>
                     </tr>

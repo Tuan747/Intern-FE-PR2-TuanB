@@ -32,21 +32,3 @@ export const ManagerMovies = styled.div`
         }
     }
 `;
-
-export const AddMovies = styled.div`
-    text-align: center;
-    font-size: 18px;
-    cursor: pointer;
-    transition: ease-in-out .3s;
-    width: 20%;
-    margin: 0 auto 20px auto;
-
-    &:hover {
-        color: red;
-    }
-
-    span {
-        margin-left: 10px;
-    }
-`;
-
