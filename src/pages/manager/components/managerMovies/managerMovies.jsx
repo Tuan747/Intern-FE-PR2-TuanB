@@ -4,8 +4,7 @@ import React, { useEffect } from 'react';
 import { Col, Row, Table } from 'reactstrap';
 import { MANAGER, TAB_ADMIN_MOVIE } from '../../../../constants';
 import { theme } from '../../../../styles/theme';
-import * as S from './style-managerMovies';
-import * as F from '../managerUser/style-managerUser';
+import * as F from '../../style-manager';
 import PaginationNumber from '../../../../components/Pagination/Pagination';
 import { useDispatch, useSelector } from 'react-redux';
 import { getMovies, getMoviesComming, getMoviesPlaying, getMoviesTotal } from '../../managerSlice';
@@ -51,7 +50,7 @@ function ManagerMovies({ tabChange }) {
         })
 
     return (
-        <S.ManagerMovies theme={theme} style={{ display: TAB_ADMIN_MOVIE === tabChange ? 'block' : 'none' }} >
+        <F.ManagerBox theme={theme} style={{ display: TAB_ADMIN_MOVIE === tabChange ? 'block' : 'none' }} >
             <h1>{MANAGER.movies.title}</h1>
             <Add />
             <Row>
@@ -105,7 +104,7 @@ function ManagerMovies({ tabChange }) {
                 </tbody>
             </Table>
             <PaginationNumber />
-        </S.ManagerMovies>
+        </F.ManagerBox>
     );
 }
 

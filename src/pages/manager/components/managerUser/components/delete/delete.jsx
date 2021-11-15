@@ -4,7 +4,7 @@ import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import { MANAGER } from '../../../../../../constants';
 import { theme } from '../../../../../../styles/theme';
 import { deleteUser } from '../../../../managerSlice';
-import * as S from '../../style-managerUser'
+import * as F from '../../../../style-manager'
 
 function Delete({ id, name }) {
     const dispatch = useDispatch()
@@ -18,7 +18,7 @@ function Delete({ id, name }) {
 
     return (
         <div>
-            <S.BtnDelete theme={theme} onClick={toggleDelete}>{MANAGER.user.table_btn_delete}</S.BtnDelete>
+            <F.BtnDelete theme={theme} onClick={toggleDelete}>{MANAGER.user.table_btn_delete}</F.BtnDelete>
 
             <Modal isOpen={toggleFormAdd} toggle={toggleDelete} >
                 <ModalHeader toggle={toggleDelete}>{MANAGER.user.table_btn_delete}</ModalHeader>
