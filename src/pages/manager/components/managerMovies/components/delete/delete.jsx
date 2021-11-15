@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { MANAGER } from '../../../../../../constants';
 import { theme } from '../../../../../../styles/theme';
-import * as F from '../../../managerUser/style-managerUser';
+import * as F from '../../../../style-manager';
 import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import { useDispatch } from 'react-redux';
 import { deleteMove } from '../../../../managerSlice';

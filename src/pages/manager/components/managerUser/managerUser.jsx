@@ -10,7 +10,7 @@ import { MANAGER, TAB_ADMIN_USER } from '../../../../constants';
 import { theme } from '../../../../styles/theme';
 import { clearStatusDeleteUser, getUser, getUserMonth, getUserWeek, getUserYear } from '../../managerSlice';
 import { getNewTotalPages } from '../../../../components/Pagination/pagiSlice'
-import * as S from './style-managerUser'
+import * as F from '../../style-manager'
 import Delete from './components/delete/delete';
 
 function ManagerUser({ tabChange }) {
@@ -49,41 +49,41 @@ function ManagerUser({ tabChange }) {
         })
 
     return (
-        <S.ManagerUser theme={theme} style={{ display: TAB_ADMIN_USER === tabChange ? 'block' : 'none' }}>
+        <F.ManagerBox theme={theme} style={{ display: TAB_ADMIN_USER === tabChange ? 'block' : 'none' }}>
             <h1>{MANAGER.user.title}</h1>
             <Row>
                 <Col lg={4}>
-                    <S.ContentBox theme={theme}>
-                        <S.TitleBox theme={theme}>{MANAGER.user.title_week}</S.TitleBox>
-                        <S.NumberBox theme={theme}>
-                            <S.Icon>
+                    <F.ContentBox theme={theme}>
+                        <F.TitleBox theme={theme}>{MANAGER.user.title_week}</F.TitleBox>
+                        <F.NumberBox theme={theme}>
+                            <F.Icon>
                                 <FontAwesomeIcon icon={faUser} />
-                            </S.Icon>
+                            </F.Icon>
                             <span>+{userNumberInWeek}</span>
-                        </S.NumberBox>
-                    </S.ContentBox>
+                        </F.NumberBox>
+                    </F.ContentBox>
                 </Col>
                 <Col lg={4}>
-                    <S.ContentBox theme={theme}>
-                        <S.TitleBox theme={theme}>{MANAGER.user.title_month}</S.TitleBox>
-                        <S.NumberBox theme={theme}>
-                            <S.Icon>
+                    <F.ContentBox theme={theme}>
+                        <F.TitleBox theme={theme}>{MANAGER.user.title_month}</F.TitleBox>
+                        <F.NumberBox theme={theme}>
+                            <F.Icon>
                                 <FontAwesomeIcon icon={faUser} />
-                            </S.Icon>
+                            </F.Icon>
                             <span>+{userNumberInMonth}</span>
-                        </S.NumberBox>
-                    </S.ContentBox>
+                        </F.NumberBox>
+                    </F.ContentBox>
                 </Col>
                 <Col lg={4}>
-                    <S.ContentBox theme={theme}>
-                        <S.TitleBox theme={theme}>{MANAGER.user.title_year}</S.TitleBox>
-                        <S.NumberBox theme={theme}>
-                            <S.Icon>
+                    <F.ContentBox theme={theme}>
+                        <F.TitleBox theme={theme}>{MANAGER.user.title_year}</F.TitleBox>
+                        <F.NumberBox theme={theme}>
+                            <F.Icon>
                                 <FontAwesomeIcon icon={faUser} />
-                            </S.Icon>
+                            </F.Icon>
                             <span>+{userNumberInYear}</span>
-                        </S.NumberBox>
-                    </S.ContentBox>
+                        </F.NumberBox>
+                    </F.ContentBox>
                 </Col>
             </Row>
             <Table dark>
@@ -101,7 +101,7 @@ function ManagerUser({ tabChange }) {
                 </tbody>
             </Table>
             <PaginationNumber />
-        </S.ManagerUser>
+        </F.ManagerBox>
     );
 }
 
