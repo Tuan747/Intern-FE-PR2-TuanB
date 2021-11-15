@@ -21,6 +21,19 @@ const manager = createSlice({
             messagesEditSuccess: null,
             messagesDeleteSuccess: null,
         },
+        managerMoviesTime: {
+            moviesTimeNumber: {},
+            filter: {
+                name: null,
+                theater: null,
+                date: null,
+                dateSelect: null,
+                theaterSelect: null,
+            },
+            listName: [],
+            statusNew: null,
+            statusDelete: null,
+        },
         error: null,
     },
     reducers: {
@@ -205,18 +218,205 @@ const manager = createSlice({
             }
         },
 
+        clearMessagesDeleteSuccess: (state, action) => {
+            return {
+                ...state,
+                managerMovies: {
+                    ...state.managerMovies,
+                    messagesDeleteSuccess: null
+                }
+            }
+        },
+
+        getMovieTime: () => { },
+
+        getMoviesTimeNumber: (state, action) => {
+            return {
+                ...state,
+                managerMoviesTime: {
+                    ...state.managerMoviesTime,
+                    moviesTimeNumber: action.payload
+                }
+            }
+        },
+
+        getNameMovieTime: () => { },
+
+        getListNameMoviesTime: (state, action) => {
+            return {
+                ...state,
+                managerMoviesTime: {
+                    ...state.managerMoviesTime,
+                    listName: action.payload,
+                }
+            }
+        },
+
+        getNameMoviesSelectTime: (state, action) => {
+            return {
+                ...state,
+                managerMoviesTime: {
+                    ...state.managerMoviesTime,
+                    filter: {
+                        ...state.managerMoviesTime.filter,
+                        name: action.payload
+                    }
+                }
+            }
+        },
+
+        getTheater: () => { },
+
+        getAllTheater: (state, action) => {
+            return {
+                ...state,
+                managerMoviesTime: {
+                    ...state.managerMoviesTime,
+                    filter: {
+                        ...state.managerMoviesTime.filter,
+                        theater: action.payload
+                    }
+                }
+            }
+        },
+
+        getDate: () => { },
+
+        getAllDate: (state, action) => {
+            return {
+                ...state,
+                managerMoviesTime: {
+                    ...state.managerMoviesTime,
+                    filter: {
+                        ...state.managerMoviesTime.filter,
+                        date: action.payload
+                    }
+                }
+            }
+        },
+
+        getMovieTimeUpdate: () => { },
+
+        getAllMovieTimeUpdate: (state, action) => {
+            return {
+                ...state,
+                managerMoviesTime: {
+                    ...state.managerMoviesTime,
+                    moviesTimeNumber: action.payload
+                }
+            }
+        },
+
+        clearTheater: (state, action) => {
+            return {
+                ...state,
+                managerMoviesTime: {
+                    ...state.managerMoviesTime,
+                    filter: {
+                        ...state.managerMoviesTime.filter,
+                        theaterSelect: null
+                    }
+                }
+            }
+        },
+
+        clearDate: (state, action) => {
+            return {
+                ...state,
+                managerMoviesTime: {
+                    ...state.managerMoviesTime,
+                    filter: {
+                        ...state.managerMoviesTime.filter,
+                        dateSelect: null
+                    }
+                }
+            }
+        },
+
+        newMovieTime: () => { },
+
+        statusNewSuccess: (state, action) => {
+            return {
+                ...state,
+                managerMoviesTime: {
+                    ...state.managerMoviesTime,
+                    statusNew: action.payload
+                }
+            }
+        },
+
+        getDateSelect: (state, action) => {
+            return {
+                ...state,
+                managerMoviesTime: {
+                    ...state.managerMoviesTime,
+                    filter: {
+                        ...state.managerMoviesTime.filter,
+                        dateSelect: action.payload
+                    }
+                }
+            }
+        },
+
+        getTheaterSelect: (state, action) => {
+            return {
+                ...state,
+                managerMoviesTime: {
+                    ...state.managerMoviesTime,
+                    filter: {
+                        ...state.managerMoviesTime.filter,
+                        theaterSelect: action.payload
+                    }
+                }
+            }
+        },
+
+        deleteMovieTime: () => { },
+
+        deleteMovieTimeSuccess: (state, action) => {
+            return {
+                ...state,
+                managerMoviesTime: {
+                    ...state.managerMoviesTime,
+                    statusDelete: action.payload,
+                }
+            }
+        },
+
+        clearStatusNewMovieTime: (state, action) => {
+            return {
+                ...state,
+                managerMoviesTime: {
+                    ...state.managerMoviesTime,
+                    statusNew: null
+                }
+            }
+        },
+
+        clearStatusDeleteMovieTime: (state, action) => {
+            return {
+                ...state,
+                managerMoviesTime: {
+                    ...state.managerMoviesTime,
+                    statusDelete: null
+                }
+            }
+        },
+
         getErrors: (state, action) => {
             return {
                 ...state,
                 error: action.payload
             }
-        }
+        },
+
 
     }
 })
 
 const { actions, reducer } = manager
 export const {
+    // manager user
     getNewTab,
     getUser,
     getAllUser,
@@ -229,6 +429,8 @@ export const {
     deleteUser,
     getStatusDeletesUser,
     clearStatusDeleteUser,
+
+    // manager movies
     getMovies,
     getAllMovies,
     getNumberMoviesTotal,
@@ -245,6 +447,31 @@ export const {
     clearStatusEditMovie,
     deleteMove,
     getMessageDeleteSuccess,
+    clearMessagesDeleteSuccess,
+
+    // manager movies time
+    getMovieTime,
+    getMoviesTimeNumber,
+    getNameMovieTime,
+    getListNameMoviesTime,
+    getNameMoviesSelectTime,
+    getTheater,
+    getAllTheater,
+    getDate,
+    getAllDate,
+    getMovieTimeUpdate,
+    getAllMovieTimeUpdate,
+    clearTheater,
+    clearDate,
+    newMovieTime,
+    statusNewSuccess,
+    getDateSelect,
+    getTheaterSelect,
+    deleteMovieTime,
+    deleteMovieTimeSuccess,
+    clearStatusNewMovieTime,
+    clearStatusDeleteMovieTime,
+
     getErrors,
 } = actions;
 export default reducer;

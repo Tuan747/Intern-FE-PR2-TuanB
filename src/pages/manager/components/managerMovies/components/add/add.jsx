@@ -29,7 +29,7 @@ function Add() {
             if (messagesAddSuccess === FETCH_DATA_SUCCESS) {
                 notifyNewMovieSuccess()
                 dispatch(clearStatusNewMovie())
-                toggleNewMovie()
+                setToggleFormAdd(false)
             }
             if (messagesAddSuccess === FETCH_DATA_ERROR) {
                 notifyNewMovieExist()

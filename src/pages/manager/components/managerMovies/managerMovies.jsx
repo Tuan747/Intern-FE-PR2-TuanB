@@ -1,6 +1,6 @@
 import { faEllipsisV, faVideo } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Col, Row, Table } from 'reactstrap';
 import { MANAGER, TAB_ADMIN_MOVIE } from '../../../../constants';
 import { theme } from '../../../../styles/theme';
@@ -18,6 +18,11 @@ function ManagerMovies({ tabChange }) {
     const { movies, moviesNumberPlaying, moviesNumberComming, moviesNumberTotal } = useSelector((state) => state.manager.managerMovies)
     const { limit, page } = useSelector(state => state.pagination)
 
+    const [toggleFormEdit, setToggleFormEdit] = useState(false);
+    const [toggleFormDelete, setToggleFormDelete] = useState(false);
+
+    const [itemMovie, setItemMovie] = useState({})
+
     useEffect(() => {
         if (tabChange === TAB_ADMIN_MOVIE) {
             dispatch(getMovies())
@@ -28,9 +33,19 @@ function ManagerMovies({ tabChange }) {
         }
     }, [dispatch, tabChange, limit, page, movies.total])
 
+    const handleDelete = (item) => {
+        setToggleFormDelete(true)
+        setItemMovie(item)
+    }
+
+    const handleEdit = (item) => {
+        setToggleFormEdit(true)
+        setItemMovie(item)
+    }
+
     const handleShowUser =
         movies.movie?.length && movies.movie.map((item, index) => {
-            const { name, date, length, playing, _id } = item
+            const { name, date, length, playing } = item
             return (
                 <tr key={index}>
                     <th scope="row">{index + 1}</th>
@@ -41,15 +56,15 @@ function ManagerMovies({ tabChange }) {
                     <td className='select'>
                         <FontAwesomeIcon icon={faEllipsisV} />
                         <div className='option'>
-                            <Edit movie={item} />
-                            <Delete id={_id} name={name} />
+                            <F.BtnDelete theme={theme} onClick={() => handleEdit(item)} >{MANAGER.movies.title_edit}</F.BtnDelete>
+                            <F.BtnDelete theme={theme} onClick={() => handleDelete(item)}>{MANAGER.user.table_btn_delete}</F.BtnDelete>
                         </div>
                     </td>
                 </tr>
             )
         })
 
-    return (
+    return (<>
         <F.ManagerBox theme={theme} style={{ display: TAB_ADMIN_MOVIE === tabChange ? 'block' : 'none' }} >
             <h1>{MANAGER.movies.title}</h1>
             <Add />
@@ -58,9 +73,7 @@ function ManagerMovies({ tabChange }) {
                     <F.ContentBox theme={theme}>
                         <F.TitleBox theme={theme}>{MANAGER.movies.nowMoviesTitle}</F.TitleBox>
                         <F.NumberBox theme={theme}>
-                            <F.Icon>
-                                <FontAwesomeIcon icon={faVideo} />
-                            </F.Icon>
+                            <F.Icon><FontAwesomeIcon icon={faVideo} /></F.Icon>
                             <span>+{moviesNumberPlaying}</span>
                         </F.NumberBox>
                     </F.ContentBox>
@@ -105,7 +118,9 @@ function ManagerMovies({ tabChange }) {
             </Table>
             <PaginationNumber />
         </F.ManagerBox>
-    );
+        <Edit movie={itemMovie} open={toggleFormEdit} close={setToggleFormEdit} />
+        <Delete movie={itemMovie} open={toggleFormDelete} close={setToggleFormDelete} />
+    </>);
 }
 
 export default ManagerMovies;

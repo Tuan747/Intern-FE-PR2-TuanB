@@ -8,16 +8,16 @@ import { theme } from '../../../../../../styles/theme';
 import { clearStatusEditMovie, editMovie } from '../../../../managerSlice';
 import * as F from '../../../../style-manager';
 
-function Edit({ movie }) {
+function Edit({ movie, open, close }) {
     const dispatch = useDispatch()
     const { messagesEditSuccess } = useSelector((state) => state.manager.managerMovies)
-    const [toggleFormAdd, setToggleFormAdd] = useState(false);
-    const toggleEditMovie = () => setToggleFormAdd(!toggleFormAdd);
+
     const { register, handleSubmit, formState: { errors }, setValue } = useForm();
     //notify
     const notifyNewMovieDateWrong = () => toast.error(MANAGER.movies.notify_error_date);
     const notifyNewMovieVideoWrong = () => toast.error(MANAGER.movies.notify_error_video);
     const notifyNewMovieImageWrong = () => toast.error(MANAGER.movies.notify_error_img);
+    const notifyEditMovieSuccess = () => toast.success('sua thanh cong');
 
     const [playing, setPlaying] = useState(true)
     const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -45,11 +45,12 @@ function Edit({ movie }) {
     useEffect(() => {
         if (messagesEditSuccess) {
             if (messagesEditSuccess === FETCH_DATA_SUCCESS) {
-                setToggleFormAdd(false)
+                close(false)
+                notifyEditMovieSuccess()
                 dispatch(clearStatusEditMovie())
             }
         }
-    }, [dispatch, messagesEditSuccess])
+    }, [dispatch, messagesEditSuccess, close])
 
     const onSubmit = (data) => {
         const allowFileImage = /[\/.](gif|jpg|jpeg|tiff|png)$/i
@@ -116,94 +117,91 @@ function Edit({ movie }) {
         </Dropdown>)
 
     return (
-        <div>
-            <F.BtnDelete theme={theme} onClick={toggleEditMovie}>{MANAGER.movies.title_edit}</F.BtnDelete>
-            <Modal isOpen={toggleFormAdd} toggle={toggleEditMovie} >
-                <F.Form onSubmit={handleSubmit(onSubmit)} theme={theme}>
-                    <ModalHeader toggle={toggleEditMovie}>{MANAGER.movies.title_edit} <br /> <strong>{movie.name}</strong></ModalHeader>
-                    <ModalBody>
-                        <F.ModalItem theme={theme}>
-                            <h5>{MANAGER.movies.table_name}</h5>
-                            <input {...register("name", { required: true })} placeholder={MANAGER.movies.table_name} />
-                            {errors.name && <span>{MANAGER.movies.notify_error_name}</span>}
-                        </F.ModalItem>
+        <Modal isOpen={open} toggle={close} >
+            <F.Form onSubmit={handleSubmit(onSubmit)} theme={theme}>
+                <ModalHeader toggle={close}>{MANAGER.movies.title_edit} <br /> <strong>{movie.name}</strong></ModalHeader>
+                <ModalBody>
+                    <F.ModalItem theme={theme}>
+                        <h5>{MANAGER.movies.table_name}</h5>
+                        <input {...register("name", { required: true })} placeholder={MANAGER.movies.table_name} />
+                        {errors.name && <span>{MANAGER.movies.notify_error_name}</span>}
+                    </F.ModalItem>
 
-                        <F.ModalItem theme={theme}>
-                            <h5>{MANAGER.movies.title_add_desc}</h5>
-                            <input {...register("decription", { required: true })} placeholder={MANAGER.movies.title_add_desc} />
-                            {errors.decription && <span>{MANAGER.movies.notify_error_desc}</span>}
-                        </F.ModalItem>
+                    <F.ModalItem theme={theme}>
+                        <h5>{MANAGER.movies.title_add_desc}</h5>
+                        <input {...register("decription", { required: true })} placeholder={MANAGER.movies.title_add_desc} />
+                        {errors.decription && <span>{MANAGER.movies.notify_error_desc}</span>}
+                    </F.ModalItem>
 
-                        <F.ModalItem theme={theme}>
-                            <h5>{MANAGER.movies.title_add_director}</h5>
-                            <input {...register("director", { required: true })} placeholder={MANAGER.movies.title_add_director} />
-                            {errors.director && <span>{MANAGER.movies.notify_error_director}</span>}
-                        </F.ModalItem>
+                    <F.ModalItem theme={theme}>
+                        <h5>{MANAGER.movies.title_add_director}</h5>
+                        <input {...register("director", { required: true })} placeholder={MANAGER.movies.title_add_director} />
+                        {errors.director && <span>{MANAGER.movies.notify_error_director}</span>}
+                    </F.ModalItem>
 
-                        <F.ModalItem theme={theme}>
-                            <h5>{MANAGER.movies.title_add_actor}</h5>
-                            <input {...register("actor", { required: true })} placeholder={MANAGER.movies.title_add_actor} />
-                            {errors.actor && <span>{MANAGER.movies.notify_error_actor}</span>}
-                        </F.ModalItem>
+                    <F.ModalItem theme={theme}>
+                        <h5>{MANAGER.movies.title_add_actor}</h5>
+                        <input {...register("actor", { required: true })} placeholder={MANAGER.movies.title_add_actor} />
+                        {errors.actor && <span>{MANAGER.movies.notify_error_actor}</span>}
+                    </F.ModalItem>
 
-                        <F.ModalItem theme={theme}>
-                            <h5>{MANAGER.movies.title_add_start_date}</h5>
-                            <input type="date" {...register("date_start", { required: true })} placeholder={MANAGER.movies.title_add_start_date} />
-                            {errors.date_start && <span>{MANAGER.movies.notify_error_start_date}</span>}
-                        </F.ModalItem>
+                    <F.ModalItem theme={theme}>
+                        <h5>{MANAGER.movies.title_add_start_date}</h5>
+                        <input type="date" {...register("date_start", { required: true })} placeholder={MANAGER.movies.title_add_start_date} />
+                        {errors.date_start && <span>{MANAGER.movies.notify_error_start_date}</span>}
+                    </F.ModalItem>
 
-                        <F.ModalItem theme={theme}>
-                            <h5>{MANAGER.movies.title_add_start_end}</h5>
-                            <input type="date" {...register("date_end", { required: true })} placeholder={MANAGER.movies.title_add_start_end} />
-                            {errors.date_end && <span>{MANAGER.movies.notify_error_start_end}</span>}
-                        </F.ModalItem>
+                    <F.ModalItem theme={theme}>
+                        <h5>{MANAGER.movies.title_add_start_end}</h5>
+                        <input type="date" {...register("date_end", { required: true })} placeholder={MANAGER.movies.title_add_start_end} />
+                        {errors.date_end && <span>{MANAGER.movies.notify_error_start_end}</span>}
+                    </F.ModalItem>
 
-                        <F.ModalItem theme={theme}>
-                            <h5>{MANAGER.movies.title_add_language}</h5>
-                            <input {...register("language", { required: true })} placeholder={MANAGER.movies.title_add_language} />
-                            {errors.language && <span>{MANAGER.movies.notify_error_language}</span>}
-                        </F.ModalItem>
+                    <F.ModalItem theme={theme}>
+                        <h5>{MANAGER.movies.title_add_language}</h5>
+                        <input {...register("language", { required: true })} placeholder={MANAGER.movies.title_add_language} />
+                        {errors.language && <span>{MANAGER.movies.notify_error_language}</span>}
+                    </F.ModalItem>
 
-                        <F.ModalItem theme={theme}>
-                            <h5>{MANAGER.movies.title_add_type}</h5>
-                            <input {...register("type", { required: true })} placeholder={MANAGER.movies.title_add_type} />
-                            {errors.type && <span>{MANAGER.movies.notify_error_type}</span>}
-                        </F.ModalItem>
+                    <F.ModalItem theme={theme}>
+                        <h5>{MANAGER.movies.title_add_type}</h5>
+                        <input {...register("type", { required: true })} placeholder={MANAGER.movies.title_add_type} />
+                        {errors.type && <span>{MANAGER.movies.notify_error_type}</span>}
+                    </F.ModalItem>
 
-                        <F.ModalItem theme={theme}>
-                            <h5>{MANAGER.movies.title_add_lenth}</h5>
-                            <input type='number' min={1} {...register("length", { required: true })} placeholder={MANAGER.movies.title_add_lenth} />
-                            {errors.length && <span>{MANAGER.movies.notify_error_lenth}</span>}
-                        </F.ModalItem>
+                    <F.ModalItem theme={theme}>
+                        <h5>{MANAGER.movies.title_add_lenth}</h5>
+                        <input type='number' min={1} {...register("length", { required: true })} placeholder={MANAGER.movies.title_add_lenth} />
+                        {errors.length && <span>{MANAGER.movies.notify_error_lenth}</span>}
+                    </F.ModalItem>
 
-                        <F.ModalItem theme={theme}>
-                            <h5>{MANAGER.movies.title_add_rating}</h5>
-                            <input type='number' min={1} {...register("rating", { required: true })} placeholder={MANAGER.movies.title_add_rating} />
-                            {errors.rating && <span>{MANAGER.movies.notify_error_rating}</span>}
-                        </F.ModalItem>
+                    <F.ModalItem theme={theme}>
+                        <h5>{MANAGER.movies.title_add_rating}</h5>
+                        <input type='number' min={1} {...register("rating", { required: true })} placeholder={MANAGER.movies.title_add_rating} />
+                        {errors.rating && <span>{MANAGER.movies.notify_error_rating}</span>}
+                    </F.ModalItem>
 
-                        <F.ModalItem theme={theme}>
-                            <h5>{MANAGER.movies.title_add_trailer}</h5>
-                            <input type="file" {...register("trailer")} />
-                        </F.ModalItem>
+                    <F.ModalItem theme={theme}>
+                        <h5>{MANAGER.movies.title_add_trailer}</h5>
+                        <input type="file" {...register("trailer")} />
+                    </F.ModalItem>
 
-                        <F.ModalItem theme={theme}>
-                            <h5>{MANAGER.movies.title_add_img}</h5>
-                            <input type="file" {...register("image")} />
-                        </F.ModalItem>
+                    <F.ModalItem theme={theme}>
+                        <h5>{MANAGER.movies.title_add_img}</h5>
+                        <input type="file" {...register("image")} />
+                    </F.ModalItem>
 
-                        <F.ModalItem theme={theme}>
-                            <h5>{MANAGER.movies.title_add_status}</h5>
-                            {dropStatus}
-                        </F.ModalItem>
-                    </ModalBody>
-                    <ModalFooter>
-                        <Button type="submit">{MANAGER.movies.btn_create}</Button>
-                        <Button onClick={toggleEditMovie}>{MANAGER.movies.btn_close}</Button>
-                    </ModalFooter>
-                </F.Form>
-            </Modal>
-        </div>
+                    <F.ModalItem theme={theme}>
+                        <h5>{MANAGER.movies.title_add_status}</h5>
+                        {dropStatus}
+                    </F.ModalItem>
+                </ModalBody>
+                <ModalFooter>
+                    <Button type="submit">{MANAGER.movies.btn_create}</Button>
+                    <Button onClick={close}>{MANAGER.movies.btn_close}</Button>
+                </ModalFooter>
+            </F.Form>
+        </Modal>
     );
 }
 

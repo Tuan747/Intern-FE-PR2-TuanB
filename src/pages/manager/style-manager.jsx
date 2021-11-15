@@ -10,7 +10,6 @@ export const TabContent = styled.ul`
     color: ${props => props.theme.text_white};
     border-radius: 15px;
     overflow: hidden;
-
     .admin__tab-active {
         background: ${props => props.theme.bg_yellow};
         color: ${props => props.theme.text_black};
@@ -23,7 +22,6 @@ export const TabItem = styled.li`
     transition: ease-in-out .3s;
     font-size: ${props => props.theme.size_text_l};
     cursor: pointer;
-
     svg {
         margin-right: 20px;
     }
@@ -40,24 +38,20 @@ export const ManagerBox = styled.div`
     background: ${props => props.theme.bg_main};
     padding: 30px;
     border-radius: 15px;
-
     th, td {
         text-align: center;
     }
-
     h1 {
         font-size: ${props => props.theme.size_text_4xl};
         text-align: center;
         margin-bottom: 20px;
     }
-
     .dropdown-toggle {
         width: 100%;
         border-radius: 30px 0px 30px 0px;
         background: red;
         transition: ease-in-out .2s;
         margin-bottom: 25px;
-
         &:hover {
             background: ${props => props.theme.bg_main};
         }
@@ -75,7 +69,6 @@ export const ManagerBox = styled.div`
             }
         }
     }
-
     .select {
         position: relative;
         &:hover > .option {
@@ -130,7 +123,6 @@ export const BtnDelete = styled.button`
     &:not(:last-child) {
         margin-bottom: 5px;
     }
-
     &:hover {
         background: ${props => props.theme.bg_available_seat};
         color: ${props => props.theme.text_white};
@@ -144,11 +136,9 @@ export const Add = styled.div`
     transition: ease-in-out .3s;
     width: 20%;
     margin: 0 auto 20px auto;
-
     &:hover {
         color: red;
     }
-
     span {
         margin-left: 10px;
     }
@@ -156,7 +146,6 @@ export const Add = styled.div`
 
 export const Form = styled.form`
     background: ${props => props.theme.bg_black_fading};
-
     .modal-header {
         color: ${props => props.theme.text_orange}
     }
@@ -164,12 +153,10 @@ export const Form = styled.form`
 
 export const ModalItem = styled.div`
     margin-top: 20px;
-
     h5 {
         font-size: 16px;
         color: ${props => props.theme.text_orange};
     }
-
     input {
         font-size: 16px;
         width: 100%;
@@ -177,7 +164,6 @@ export const ModalItem = styled.div`
         height: 40px;
         border-radius: 10px;
     }
-
     span {
         color: ${props => props.theme.text_error};
     }
@@ -187,4 +173,3 @@ export const ModalItem = styled.div`
         padding: 10px;
     }
 `;
-

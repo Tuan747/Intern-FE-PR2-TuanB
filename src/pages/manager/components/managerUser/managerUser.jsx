@@ -20,17 +20,19 @@ function ManagerUser({ tabChange }) {
     const { limit, page } = useSelector(state => state.pagination)
 
     useEffect(() => {
-        const notifyDeleteUser = () => toast.success(deleteStatus);
-        dispatch(getUser())
-        dispatch(getUserWeek())
-        dispatch(getUserMonth())
-        dispatch(getUserYear())
-        dispatch(getNewTotalPages(user.total))
-        if (deleteStatus) {
-            notifyDeleteUser()
-            dispatch(clearStatusDeleteUser())
+        if (TAB_ADMIN_USER === tabChange) {
+            const notifyDeleteUser = () => toast.success(deleteStatus);
+            dispatch(getUser())
+            dispatch(getUserWeek())
+            dispatch(getUserMonth())
+            dispatch(getUserYear())
+            dispatch(getNewTotalPages(user.total))
+            if (deleteStatus) {
+                notifyDeleteUser()
+                dispatch(clearStatusDeleteUser())
+            }
         }
-    }, [dispatch, deleteStatus, user.total, limit, page])
+    }, [tabChange, dispatch, deleteStatus, user.total, limit, page])
 
     const handleShowUser =
         user.user?.length && user.user.map((item, index) => {

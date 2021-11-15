@@ -1,9 +1,12 @@
 import { call, put, delay, takeEvery, select } from 'redux-saga/effects';
 import managerMoviesAPI from '../../api/managerMoviesAPI';
+import managerMoviesTime from '../../api/managerMoviesTime';
 import managerUserAPI from '../../api/managerUserAPI';
+import ticketAPI from '../../api/ticketAPI';
 import { hiddenLoading, showLoading } from '../../components/Loading/lodingSlice';
+import { getNewPage, getNewTotalPages } from '../../components/Pagination/pagiSlice';
 import { FETCH_DATA_SUCCESS } from '../../constants';
-import { deleteMove, deleteUser, editMovie, getAllMovies, getAllUser, getErrors, getMessageAddSuccess, getMessageDeleteSuccess, getMessageEditSuccess, getMovies, getMoviesComming, getMoviesPlaying, getMoviesTotal, getNumberMoviesComming, getNumberMoviesPlaying, getNumberMoviesTotal, getNumberUserMonth, getNumberUserWeek, getNumberUserYear, getStatusDeletesUser, getUser, getUserMonth, getUserWeek, getUserYear, newMovie } from './managerSlice';
+import { deleteMove, deleteMovieTime, deleteMovieTimeSuccess, deleteUser, editMovie, getAllDate, getAllMovies, getAllTheater, getAllUser, getDate, getDateSelect, getErrors, getListNameMoviesTime, getMessageAddSuccess, getMessageDeleteSuccess, getMessageEditSuccess, getMovies, getMoviesComming, getMoviesPlaying, getMoviesTimeNumber, getMoviesTotal, getMovieTime, getNameMovieTime, getNumberMoviesComming, getNumberMoviesPlaying, getNumberMoviesTotal, getNumberUserMonth, getNumberUserWeek, getNumberUserYear, getStatusDeletesUser, getTheater, getTheaterSelect, getUser, getUserMonth, getUserWeek, getUserYear, newMovie, newMovieTime, statusNewSuccess } from './managerSlice';
 
 function* trackingGetAllUser() {
     yield put(showLoading())
@@ -144,9 +147,88 @@ function* trackingEditMovies(action) {
 function* trackingDeleteMovies(action) {
     yield put(showLoading())
     const data = yield call(managerMoviesAPI.getAPIDeleteMovies, action.payload)
+    console.log(data);
     if (data.statusCode === FETCH_DATA_SUCCESS) {
         yield put(getMovies())
         yield put(getMessageDeleteSuccess(data.statusCode))
+    } else {
+        yield put(getMessageDeleteSuccess(data.statusCode))
+    }
+    yield delay(300)
+    yield put(hiddenLoading())
+}
+
+function* trackingGetNumberMoviesTime() {
+    yield put(showLoading())
+    const { filter } = yield select(state => state.manager.managerMoviesTime)
+    const { limit, page } = yield select(state => state.pagination)
+    const data = yield call(managerMoviesTime.getAPIAllMoviesNumber, limit, page, filter)
+    if (data.statusCode === FETCH_DATA_SUCCESS) {
+        yield put(getMoviesTimeNumber(data.data))
+        yield put(getNewTotalPages(data.data.total))
+    } else {
+        yield put(getErrors(data.statusCode))
+    }
+    yield delay(300)
+    yield put(hiddenLoading())
+}
+
+function* trackingGetListNameMoviesTime() {
+    yield put(showLoading())
+    const data = yield call(managerMoviesTime.getAPIAllListName)
+    if (data.statusCode === FETCH_DATA_SUCCESS) {
+        yield put(getListNameMoviesTime(data.data))
+    } else {
+        yield put(getErrors(data.statusCode))
+    }
+    yield delay(300)
+    yield put(hiddenLoading())
+}
+
+function* trackingGetAllTheater() {
+    yield put(showLoading())
+    const data = yield call(ticketAPI.getAllTheater)
+    if (data.statusCode === FETCH_DATA_SUCCESS) {
+        yield put(getAllTheater(data.data))
+    } else {
+        yield put(getErrors(data.statusCode))
+    }
+    yield delay(300)
+    yield put(hiddenLoading())
+}
+
+function* trackingGetAllDate(action) {
+    yield put(showLoading())
+    const { id } = yield select(state => state.manager.managerMoviesTime.filter.name)
+    const data = yield call(ticketAPI.getAllDates, id, action.payload)
+    if (data.statusCode === FETCH_DATA_SUCCESS) {
+        yield put(getAllDate(data.data))
+    } else {
+        yield put(getErrors(data.statusCode))
+    }
+    yield delay(300)
+    yield put(hiddenLoading())
+}
+
+function* trackingGetNewMovie(action) {
+    yield put(showLoading())
+    const data = yield call(managerMoviesTime.getAPINewMovie, action.payload)
+    if (data.statusCode === FETCH_DATA_SUCCESS) {
+        yield put(getMovieTime())
+        yield put(statusNewSuccess(data.statusCode))
+    } else {
+        yield put(getErrors(data.statusCode))
+    }
+    yield delay(300)
+    yield put(hiddenLoading())
+}
+
+function* trackingDeleteMovieTime(action) {
+    yield put(showLoading())
+    const data = yield call(managerMoviesTime.deleteMovieTime, action.payload)
+    if (data.statusCode === FETCH_DATA_SUCCESS) {
+        yield put(getMovieTime())
+        yield put(deleteMovieTimeSuccess(data.statusCode))
     } else {
         yield put(getErrors(data.statusCode))
     }
@@ -170,6 +252,14 @@ function* managerSaga() {
     yield takeEvery(newMovie, trackingGetNewMovies)
     yield takeEvery(editMovie, trackingEditMovies)
     yield takeEvery(deleteMove, trackingDeleteMovies)
+
+    // movies time
+    yield takeEvery([getMovieTime, getDateSelect, getTheaterSelect, getNewPage], trackingGetNumberMoviesTime)
+    yield takeEvery(getNameMovieTime, trackingGetListNameMoviesTime)
+    yield takeEvery(getTheater, trackingGetAllTheater)
+    yield takeEvery(getDate, trackingGetAllDate)
+    yield takeEvery(newMovieTime, trackingGetNewMovie)
+    yield takeEvery(deleteMovieTime, trackingDeleteMovieTime)
 }
 
 export default managerSaga
