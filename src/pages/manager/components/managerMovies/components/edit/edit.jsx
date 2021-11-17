@@ -119,7 +119,7 @@ function Edit({ movie, open, close }) {
     return (
         <Modal isOpen={open} toggle={close} >
             <F.Form onSubmit={handleSubmit(onSubmit)} theme={theme}>
-                <ModalHeader toggle={close}>{MANAGER.movies.title_edit} <br /> <strong>{movie.name}</strong></ModalHeader>
+                <ModalHeader toggle={() => close(false)}>{MANAGER.movies.title_edit} <br /> <strong>{movie.name}</strong></ModalHeader>
                 <ModalBody>
                     <F.ModalItem theme={theme}>
                         <h5>{MANAGER.movies.table_name}</h5>
@@ -198,7 +198,7 @@ function Edit({ movie, open, close }) {
                 </ModalBody>
                 <ModalFooter>
                     <Button type="submit">{MANAGER.movies.btn_create}</Button>
-                    <Button onClick={close}>{MANAGER.movies.btn_close}</Button>
+                    <Button onClick={() => close(false)}>{MANAGER.movies.btn_close}</Button>
                 </ModalFooter>
             </F.Form>
         </Modal>

@@ -72,7 +72,7 @@ function Add() {
     }
 
     return (
-        <F.Add onClick={toggleNewMovie} theme={theme}>
+        <F.Add onClick={() => setToggleFormAdd(true)} theme={theme}>
             <FontAwesomeIcon icon={faPlusCircle} />
             <span>{MANAGER.movies.title_add_movie}</span>
             <Modal
@@ -80,7 +80,7 @@ function Add() {
                 toggle={toggleNewMovie}
             >
                 <F.Form onSubmit={handleSubmit(onSubmit)} theme={theme}>
-                    <ModalHeader toggle={toggleNewMovie}>{MANAGER.movies.title_add_movie}</ModalHeader>
+                    <ModalHeader toggle={() => setToggleFormAdd(false)}>{MANAGER.movies.title_add_movie}</ModalHeader>
                     <ModalBody>
                         <F.ModalItem theme={theme}>
                             <h5>{MANAGER.movies.table_name}</h5>
@@ -165,7 +165,7 @@ function Add() {
                     </ModalBody>
                     <ModalFooter>
                         <Button type="submit">{MANAGER.movies.btn_create}</Button>
-                        <Button onClick={toggleNewMovie}>{MANAGER.movies.btn_close}</Button>
+                        <Button onClick={() => setToggleFormAdd(false)}>{MANAGER.movies.btn_close}</Button>
                     </ModalFooter>
                 </F.Form>
             </Modal>

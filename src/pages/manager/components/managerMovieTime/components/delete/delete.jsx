@@ -26,13 +26,13 @@ function Delete({ movieId, open, close }) {
 
     return (
         <Modal isOpen={open} toggle={close} >
-            <ModalHeader toggle={close}>{MANAGER.user.table_btn_delete}</ModalHeader>
+            <ModalHeader toggle={() => close(false)}>{MANAGER.movie_time.btn_delete}</ModalHeader>
             <ModalBody>
-                {MANAGER.user.question_delete_1} {MANAGER.user.question_delete_2}
+                {MANAGER.movie_time.title_delete_QA}
             </ModalBody>
             <ModalFooter>
-                <Button onClick={handleDeleteMovies}>{MANAGER.user.btn_yes}</Button>
-                <Button onClick={close}>{MANAGER.user.btn_close}</Button>
+                <Button onClick={handleDeleteMovies}>{MANAGER.movie_time.btn_delete}</Button>
+                <Button onClick={() => close(false)}>{MANAGER.movie_time.btn_close}</Button>
             </ModalFooter>
         </Modal>
     );
