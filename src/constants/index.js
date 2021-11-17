@@ -127,6 +127,7 @@ export const MANAGER = {
         title_filter_theater: 'Chọn rạp',
         title_filter_date: 'Chọn ngày',
         title: 'Thống kê xuất chiếu',
+        title_delete_QA: 'Bạn có muốn xóa xuất chiếu này không ?',
         empty_title_filter_date: 'Hiện tại không có',
         empty_movies: 'Hiện tại phim này chưa có suất chiếu',
         empty_input: 'Bắt buộc nhập trường này',
@@ -136,6 +137,46 @@ export const MANAGER = {
         btn_delete: 'Xóa',
         btn_create: 'Tạo mới',
         btn_close: 'Hủy',
+    },
+    gift: {
+        title: 'Thống kê mã quà tặng',
+        title_week: 'Số lượng đã lấy trong tuần này',
+        title_month: 'Số lượng đã lấy trong tháng này',
+        title_year: 'Số lượng đã lấy trong năm này',
+        title_edit: 'Chỉnh sữa mã',
+
+        title_add: 'Tạo mã quà tặng mới',
+        title_add_name: 'Tên mã quà tặng',
+        title_add_desc: 'Mô tả',
+        title_add_date_start: 'Ngày bắt đầu',
+        title_add_date_end: 'Ngày kết thúc',
+        title_add_quantity: 'Số lượng',
+        title_add_point: 'Điểm',
+        title_add_price: 'Giảm tiền',
+
+        title_delete_QA_1: 'Bạn có muốn xóa mã giảm giá',
+        title_delete_QA_2: 'này không ?',
+
+        placeholder_add_name: 'Nhập tên mã quà tặng',
+        placeholder_add_desc: 'Nhập mô tả',
+        placeholder_add_quantity: 'Nhập số lượng',
+        placeholder_add_point: 'Nhập điểm để lấy',
+        placeholder_add_price: 'Nhập giảm tiền',
+
+        table_no: 'No',
+        table_name: 'Tên',
+        table_date_start: 'Ngày bắt đầu',
+        table_date_end: 'Ngày kết thúc',
+        table_quantity: 'Số lượng',
+        table_point: 'Điểm',
+        table_price: 'Giá',
+        table_action: 'Hành động',
+
+        btn_delete: 'Xóa',
+        btn_create: 'Tạo mới',
+        btn_close: 'Hủy',
+
+        empty_input: 'Bắt buộc nhập trường này'
     }
 }
 export const TAB_ADMIN_MOVIE = 'ADMIN_MOVIE'
