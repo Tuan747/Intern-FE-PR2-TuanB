@@ -105,7 +105,9 @@ export const MANAGER = {
         btn_close: 'Đóng',
         question_delete_1: 'Bạn có muốn xóa phim',
         question_delete_2: 'không ?',
-        title_edit: 'Chỉnh Sửa phim'
+        title_edit: 'Chỉnh Sửa phim',
+        delete_success: 'Xóa thành công',
+        delete_error_now: 'Phim đang chiếu ko thể xóa',
     },
     movie_time: {
         table_no: 'No',
@@ -120,10 +122,20 @@ export const MANAGER = {
         title_select_date: 'Chọn ngày',
         title_select_hours: 'Giờ chiếu',
         title_select_price: 'Giá vé',
+        title_total_time: 'Tổng suất chiếu',
+        title_filter_name: 'Chọn tên phim',
+        title_filter_theater: 'Chọn rạp',
+        title_filter_date: 'Chọn ngày',
+        title: 'Thống kê xuất chiếu',
+        empty_title_filter_date: 'Hiện tại không có',
+        empty_movies: 'Hiện tại phim này chưa có suất chiếu',
+        empty_input: 'Bắt buộc nhập trường này',
+        notify_add_success: 'Thêm thành công',
+        notify_add_error: 'Thêm không thành công',
+        notify_delete_success: 'Xóa thành công',
+        btn_delete: 'Xóa',
         btn_create: 'Tạo mới',
         btn_close: 'Hủy',
-        empty_input: 'Bắt buộc nhập trường này',
-        title: 'Thống kê xuất chiếu'
     }
 }
 export const TAB_ADMIN_MOVIE = 'ADMIN_MOVIE'
