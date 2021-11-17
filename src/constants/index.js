@@ -2,6 +2,12 @@ export const HOST_API = "https://naht-cinema-api.herokuapp.com";
 export const FETCH_DATA_SUCCESS = 200;
 export const FETCH_DATA_ERROR = 201;
 export const PLACEHOLDER_SEARCH = "Tìm Kiếm...";
+export const SEARCH = {
+    notify_search_1: 'Từ khóa ',
+    notify_search_2: 'đã tìm thấy ',
+    notify_search_3: ' kết quả',
+    empty_search: 'Không có gì để tìm kiếm!!!'
+};
 export const MOVIES = {
     title: {
         comming: 'Phim sắp chiếu',
