@@ -193,6 +193,10 @@ export const TAB_ADMIN_USER = 'ADMIN_USER'
 export const TAB_ADMIN_GIFT = 'ADMIN_GIFT'
 export const TAB_ADMIN_MOVIETIME = 'ADMIN_MOVIETIME'
 export const TAB_ADMIN_REVENUE = 'ADMIN_REVENUE'
+
+export const TAB_INFO_USER = 'INFO_USER'
+export const TAB_HISTORY_USER = 'HISTORY'
+
 export const METHOD_PAYMENT_MOMO = 'Momo'
 export const ERROR_MESSAGE = "F5 lại trang!!!"
 export const AUTHORS = {
@@ -207,6 +211,27 @@ export const AUTHORS = {
     user: {
         infoUser: 'Thông tin cá nhân',
         logOut: 'Đăng xuất',
+    },
+    info_user: {
+        title_account: 'Thông tin tài khoản',
+        title_history: 'Lịch sử giao dịch'
+    },
+    detail_user: {
+        title: 'Thông tin tài khoản',
+        email: 'Email: ',
+        birthday: 'Ngày sinh: ',
+        point: 'Điểm thưởng: ',
+        btn_edit: 'Chỉnh sửa thông tin'
+    },
+    history: {
+        title_table_no: 'No',
+        title_table_name: 'Tên phim',
+        title_table_status: 'Trạng thái',
+        title_table_price: 'Tổng tiền',
+        title_table_date_start: 'Ngày tạo',
+        title_table_method: 'Thanh toán',
+        title_table_time_left: 'Thời gian còn lại',
+        title_table_action: 'Hành động',
     }
 }
 export const NAVBAR_TITLE = {

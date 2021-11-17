@@ -6,6 +6,7 @@ import user from '../../resourses/img/use.png'
 import { theme } from '../../styles/theme'
 import { logOut } from '../author/authorSlice';
 import { AUTHORS } from '../../constants';
+import { NavLink } from 'react-router-dom';
 
 function User({ onToggleLogin }) {
     const dispatch = useDispatch()
@@ -23,7 +24,7 @@ function User({ onToggleLogin }) {
                 <img src={user} alt="avatar" theme={theme} />
                 <div className="name__user">{dataUser.name}</div>
                 <S.Option theme={theme}>
-                    <li>{AUTHORS.user.infoUser}</li>
+                    <li><NavLink to={'/user'}>{AUTHORS.user.infoUser}</NavLink></li>
                     <li onClick={handleLogOut}>{AUTHORS.user.logOut}</li>
                 </S.Option>
             </S.Avatar>

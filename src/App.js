@@ -14,6 +14,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Ticket from "./pages/ticket/ticket";
 import Manager from "./pages/manager/manager";
+import InfoUser from "./pages/user/components/infoUser/infoUser";
 
 function App() {
     return (
@@ -43,6 +44,7 @@ function App() {
                     <Route exact path="/detailphim/:slug" component={DetailMovie} />
                     <Route exact path="/movietime/:slug" component={Ticket} />
                     <Route exact path="/quanly" component={Manager} />
+                    <Route exact path="/user" component={InfoUser} />
                 </Switch>
                 <Footer />
             </Router>

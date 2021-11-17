@@ -60,7 +60,7 @@ export const Rating = styled.span`
     }
 `;
 
-export const BtnTicket = styled.a`
+export const BtnTicket = styled.div`
     position: absolute;
     bottom: 0;
     ${props => props.theme.dFlex('center', 'center', 'none')};
