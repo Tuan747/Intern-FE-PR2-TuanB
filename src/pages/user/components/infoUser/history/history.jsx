@@ -83,8 +83,8 @@ function History({ tab }) {
                         </Table>
                     </Col>
                 </Row>
-            </F.TabItem>
-        </Container>
+            </F.TabItem >
+        </Container >
     );
 }
 

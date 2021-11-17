@@ -3,9 +3,11 @@ import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { AUTHORS } from '../../../../constants';
 import { getValueLogin } from '../../authorSlice';
-import * as S from './style-login'
+import * as F from '../../style-author'
 import { toast } from 'react-toastify';
 import { theme } from '../../../../styles/theme';
+import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
+import iconLogin from '../../../../resourses/img/icon-login.png'
 
 function Login() {
     const dispatch = useDispatch()
@@ -14,19 +16,15 @@ function Login() {
     const onSubmit = data => dispatch(getValueLogin(data));
     const [notify, setNotify] = useState(null)
 
-    const notifyLoginSuccess = () => toast.success(AUTHORS.success, {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-    });
+    const [toggleLogin, setToggleLogin] = useState(false);
+    const toggleFormLogin = () => setToggleLogin(!toggleLogin);
+
+    const notifyLoginSuccess = () => toast.success(AUTHORS.success);
 
     useEffect(() => {
         if (status === 200) {
             notifyLoginSuccess()
+            setToggleLogin(false)
         }
         if (status === 201) {
             setNotify(AUTHORS.error)
@@ -36,22 +34,38 @@ function Login() {
         }
     }, [dispatch, status])
 
-    return (
-        <S.FormLogin theme={theme}>
-            <S.FormInput onSubmit={handleSubmit(onSubmit)} theme={theme}>
-                <h1>{AUTHORS.login}</h1>
-                <input {...register("email", { required: true })} placeholder="email" />
-                {errors.email && <S.ErrorMessage theme={theme}>{AUTHORS.not_empty}</S.ErrorMessage>}
+    return (<>
+        <F.BtnAuthor theme={theme}>
+            <img src={iconLogin} alt="Login" />
+            <span theme={theme} onClick={toggleFormLogin}>{AUTHORS.login}</span>
+        </F.BtnAuthor>
+        <Modal
+            isOpen={toggleLogin}
+            toggle={toggleFormLogin}
+        >
+            <F.FormInput onSubmit={handleSubmit(onSubmit)} theme={theme}>
+                <ModalHeader toggle={toggleFormLogin}>{AUTHORS.login}</ModalHeader>
+                <ModalBody>
+                    <F.ModalItem theme={theme}>
+                        <input {...register("email", { required: true })} placeholder="email" />
+                        {errors.email && <F.ErrorMessage theme={theme}>{AUTHORS.not_empty}</F.ErrorMessage>}
+                    </F.ModalItem>
 
-                <input {...register("password", { required: true })} placeholder="password" />
-                {errors.password && <S.ErrorMessage theme={theme}>{AUTHORS.not_empty}</S.ErrorMessage>}
+                    <F.ModalItem theme={theme}>
+                        <input {...register("password", { required: true })} placeholder="password" type='password' />
+                        {errors.password && <F.ErrorMessage theme={theme}>{AUTHORS.not_empty}</F.ErrorMessage>}
+                    </F.ModalItem>
 
-                <h5 style={{ display: notify ? 'block' : 'none' }}>{notify}</h5>
+                    <h5 style={{ display: notify ? 'block' : 'none' }}>{notify}</h5>
 
-                <input type="submit" />
-            </S.FormInput>
-        </S.FormLogin>
-    );
+                </ModalBody>
+                <ModalFooter>
+                    <Button type="submit">{AUTHORS.btn_login}</Button>
+                    <Button onClick={toggleFormLogin}>{AUTHORS.btn_register}</Button>
+                </ModalFooter>
+            </F.FormInput>
+        </Modal>
+    </>);
 }
 
 export default Login;

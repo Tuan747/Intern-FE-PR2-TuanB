@@ -214,6 +214,8 @@ export const AUTHORS = {
     not_found: 'Tài khoản không tồn tại',
     not_empty: 'Không để trống',
     required_login: 'Bạn cần đăng nhập',
+    btn_login: 'Đăng nhập',
+    btn_register: 'Hủy',
     user: {
         infoUser: 'Thông tin cá nhân',
         logOut: 'Đăng xuất',

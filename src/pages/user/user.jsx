@@ -8,14 +8,13 @@ import { logOut } from '../author/authorSlice';
 import { AUTHORS } from '../../constants';
 import { NavLink } from 'react-router-dom';
 
-function User({ onToggleLogin }) {
+function User() {
     const dispatch = useDispatch()
     const { dataUser } = useSelector((state) => state.author)
 
     const handleLogOut = () => {
         localStorage.clear()
         dispatch(logOut())
-        onToggleLogin()
     }
 
     return (
