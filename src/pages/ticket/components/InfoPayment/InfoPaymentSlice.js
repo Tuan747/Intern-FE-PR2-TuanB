@@ -5,7 +5,8 @@ const payment = createSlice({
     initialState: {
         infoPayment: {},
         method: null,
-        error: null
+        error: null,
+        paymentSuccess: null,
     },
     reducers: {
         getPayment: () => {
@@ -25,12 +26,28 @@ const payment = createSlice({
             }
         },
 
+        getPaymentSuccess: (state, action) => {
+            return {
+                ...state,
+                paymentSuccess: action.payload
+            }
+        },
+
+        clearPaymentSuccess: (state, action) => {
+            return {
+                ...state,
+                paymentSuccess: null
+            }
+        },
+
         paymentReset: (state, action) => {
             return {
                 infoPayment: {},
                 method: null,
             }
         },
+
+        rePayment: () => { },
 
         error: (state, action) => {
             return {
@@ -48,6 +65,9 @@ export const {
     getInfoPayment,
     paymentMethod,
     paymentReset,
+    rePayment,
+    getPaymentSuccess,
+    clearPaymentSuccess,
     error,
 } = actions;
 export default reducer;

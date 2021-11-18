@@ -230,8 +230,19 @@ export const AUTHORS = {
         title_table_price: 'Tổng tiền',
         title_table_date_start: 'Ngày tạo',
         title_table_method: 'Thanh toán',
-        title_table_time_left: 'Thời gian còn lại',
         title_table_action: 'Hành động',
+        detail_theater: 'Rạp: ',
+        detail_date: 'Ngày: ',
+        detail_hour: 'Giờ: ',
+        detail_seat: 'Ghế: ',
+        status_pending: 'Đang chờ',
+        status_exit: 'Đã hủy',
+        notify_payment_success: 'Thanh toán thành công',
+        paid_succeed: 'Đã thanh toán',
+        paid_exit: 'Chưa thanh toán',
+        btn_delete: 'Xóa',
+        btn_payment: 'Thanh toán',
+        empty_history: 'Hiện tại bạn chưa đặt gì cả !!! Hãy vào website để đặt nhé',
     }
 }
 export const NAVBAR_TITLE = {
