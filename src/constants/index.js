@@ -175,8 +175,17 @@ export const MANAGER = {
         btn_delete: 'Xóa',
         btn_create: 'Tạo mới',
         btn_close: 'Hủy',
+        btn_edit: 'Chỉnh sửa',
 
-        empty_input: 'Bắt buộc nhập trường này'
+        notify_add_error: 'Tên xuất chiếu này đã tồn tại hãy tạo xuất chiếu mới',
+        notify_add_success: 'Tạo xuất chiếu thành công',
+        notify_add_error_date_end: 'Nhập ngày kết thúc lớn hơn ngày bắt đầu',
+        notify_edit_error: 'Chỉnh sửa không thành công',
+        notify_edit_success: 'Chỉnh sửa thành công',
+        notify_delete_success: 'Xóa thành công',
+
+        empty_input: 'Bắt buộc nhập trường này',
+        empty_list_girt: 'Hiện tại chưa có mã giảm giá nào. Hãy tạo mã giảm giá !!!'
     }
 }
 export const TAB_ADMIN_MOVIE = 'ADMIN_MOVIE'

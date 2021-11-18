@@ -34,6 +34,15 @@ const manager = createSlice({
             statusNew: null,
             statusDelete: null,
         },
+        gift: {
+            listGift: [],
+            numberWeek: {},
+            numberMonth: {},
+            numberYear: {},
+            statusNew: null,
+            statusEdit: null,
+            statusDelete: null,
+        },
         error: null,
     },
     reducers: {
@@ -403,6 +412,120 @@ const manager = createSlice({
             }
         },
 
+        getGiftWeek: () => { },
+
+        getAllGiftWeek: (state, action) => {
+            return {
+                ...state,
+                gift: {
+                    ...state.gift,
+                    numberWeek: action.payload,
+                },
+            }
+        },
+
+        getGiftMonth: () => { },
+
+        getAllGiftMonth: (state, action) => {
+            return {
+                ...state,
+                gift: {
+                    ...state.gift,
+                    numberMonth: action.payload,
+                },
+            }
+        },
+
+        getGiftYear: () => { },
+
+        getAllGiftYear: (state, action) => {
+            return {
+                ...state,
+                gift: {
+                    ...state.gift,
+                    numberYear: action.payload,
+                },
+            }
+        },
+
+        getListGift: () => { },
+
+        getAllListGift: (state, action) => {
+            return {
+                ...state,
+                gift: {
+                    ...state.gift,
+                    listGift: action.payload,
+                },
+            }
+        },
+
+        getNewGift: () => { },
+
+        getStatusNew: (state, action) => {
+            return {
+                ...state,
+                gift: {
+                    ...state.gift,
+                    statusNew: action.payload,
+                },
+            }
+        },
+
+        clearStatusNew: (state, action) => {
+            return {
+                ...state,
+                gift: {
+                    ...state.gift,
+                    statusNew: null,
+                },
+            }
+        },
+
+        editGift: () => { },
+
+        getStatusEditGift: (state, action) => {
+            return {
+                ...state,
+                gift: {
+                    ...state.gift,
+                    statusEdit: action.payload,
+                },
+            }
+        },
+
+        clearStatusEditGift: (state, action) => {
+            return {
+                ...state,
+                gift: {
+                    ...state.gift,
+                    statusEdit: null,
+                },
+            }
+        },
+
+        deleteGift: () => { },
+
+        getStatusDeleteGift: (state, action) => {
+            return {
+                ...state,
+                gift: {
+                    ...state.gift,
+                    statusDelete: action.payload,
+                },
+            }
+        },
+
+        clearStatusDeleteGift: (state, action) => {
+            return {
+                ...state,
+                gift: {
+                    ...state.gift,
+                    statusDelete: null,
+                },
+            }
+        },
+
         getErrors: (state, action) => {
             return {
                 ...state,
@@ -471,6 +594,25 @@ export const {
     deleteMovieTimeSuccess,
     clearStatusNewMovieTime,
     clearStatusDeleteMovieTime,
+
+    //gift 
+    getGiftWeek,
+    getAllGiftWeek,
+    getGiftMonth,
+    getAllGiftMonth,
+    getGiftYear,
+    getAllGiftYear,
+    getListGift,
+    getAllListGift,
+    getNewGift,
+    getStatusNew,
+    clearStatusNew,
+    editGift,
+    getStatusEditGift,
+    clearStatusEditGift,
+    deleteGift,
+    getStatusDeleteGift,
+    clearStatusDeleteGift,
 
     getErrors,
 } = actions;

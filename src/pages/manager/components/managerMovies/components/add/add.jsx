@@ -39,7 +39,9 @@ function Add() {
     }, [messagesAddSuccess, dispatch]);
 
     const onSubmit = (data) => {
+        //eslint-disable-next-line
         const allowFileImage = /[\/.](gif|jpg|jpeg|tiff|png)$/i
+        //eslint-disable-next-line
         const allowFileVideo = /[\/.](mov|avi|wmv|flv|3gp|mp4|mpg)$/i
         const start = new Date(data.date_start)
         const end = new Date(data.date_end)

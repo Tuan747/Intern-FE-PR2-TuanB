@@ -1,12 +1,13 @@
 import { call, put, delay, takeEvery, select } from 'redux-saga/effects';
+import managerGift from '../../api/managerGift';
 import managerMoviesAPI from '../../api/managerMoviesAPI';
 import managerMoviesTime from '../../api/managerMoviesTime';
 import managerUserAPI from '../../api/managerUserAPI';
 import ticketAPI from '../../api/ticketAPI';
 import { hiddenLoading, showLoading } from '../../components/Loading/lodingSlice';
-import { getNewPage, getNewTotalPages } from '../../components/Pagination/pagiSlice';
+import { getNewTotalPages } from '../../components/Pagination/pagiSlice';
 import { FETCH_DATA_SUCCESS } from '../../constants';
-import { deleteMove, deleteMovieTime, deleteMovieTimeSuccess, deleteUser, editMovie, getAllDate, getAllMovies, getAllTheater, getAllUser, getDate, getDateSelect, getErrors, getListNameMoviesTime, getMessageAddSuccess, getMessageDeleteSuccess, getMessageEditSuccess, getMovies, getMoviesComming, getMoviesPlaying, getMoviesTimeNumber, getMoviesTotal, getMovieTime, getNameMovieTime, getNumberMoviesComming, getNumberMoviesPlaying, getNumberMoviesTotal, getNumberUserMonth, getNumberUserWeek, getNumberUserYear, getStatusDeletesUser, getTheater, getTheaterSelect, getUser, getUserMonth, getUserWeek, getUserYear, newMovie, newMovieTime, statusNewSuccess } from './managerSlice';
+import { deleteGift, deleteMove, deleteMovieTime, deleteMovieTimeSuccess, deleteUser, editGift, editMovie, getAllDate, getAllGiftMonth, getAllGiftWeek, getAllGiftYear, getAllListGift, getAllMovies, getAllTheater, getAllUser, getDate, getDateSelect, getErrors, getGiftMonth, getGiftWeek, getGiftYear, getListGift, getListNameMoviesTime, getMessageAddSuccess, getMessageDeleteSuccess, getMessageEditSuccess, getMovies, getMoviesComming, getMoviesPlaying, getMoviesTimeNumber, getMoviesTotal, getMovieTime, getNameMovieTime, getNewGift, getNumberMoviesComming, getNumberMoviesPlaying, getNumberMoviesTotal, getNumberUserMonth, getNumberUserWeek, getNumberUserYear, getStatusDeleteGift, getStatusDeletesUser, getStatusEditGift, getStatusNew, getTheater, getTheaterSelect, getUser, getUserMonth, getUserWeek, getUserYear, newMovie, newMovieTime, statusNewSuccess } from './managerSlice';
 
 function* trackingGetAllUser() {
     yield put(showLoading())
@@ -236,6 +237,95 @@ function* trackingDeleteMovieTime(action) {
     yield put(hiddenLoading())
 }
 
+function* trackingGetAllWeek() {
+    yield put(showLoading())
+    const data = yield call(managerGift.getAPIWeek)
+    if (data.statusCode === FETCH_DATA_SUCCESS) {
+        yield put(getAllGiftWeek(data.data))
+    } else {
+        yield put(getErrors(data.statusCode))
+    }
+    yield delay(300)
+    yield put(hiddenLoading())
+}
+
+function* trackingGetAllMonth() {
+    yield put(showLoading())
+    const data = yield call(managerGift.getAPIMonth)
+    if (data.statusCode === FETCH_DATA_SUCCESS) {
+        yield put(getAllGiftMonth(data.data))
+    } else {
+        yield put(getErrors(data.statusCode))
+    }
+    yield delay(300)
+    yield put(hiddenLoading())
+}
+
+function* trackingGetAllYear() {
+    yield put(showLoading())
+    const data = yield call(managerGift.getAPIYear)
+    if (data.statusCode === FETCH_DATA_SUCCESS) {
+        yield put(getAllGiftYear(data.data))
+    } else {
+        yield put(getErrors(data.statusCode))
+    }
+    yield delay(300)
+    yield put(hiddenLoading())
+}
+
+function* trackingGetAllListGift() {
+    yield put(showLoading())
+    const { limit, page } = yield select(state => state.pagination)
+    const data = yield call(managerGift.getAPIListGift, limit, page)
+    if (data.statusCode === FETCH_DATA_SUCCESS) {
+        yield put(getNewTotalPages(data.data.total))
+        yield put(getAllListGift(data.data.gift))
+    } else {
+        yield put(getErrors(data.statusCode))
+    }
+    yield delay(300)
+    yield put(hiddenLoading())
+}
+
+function* trackingGetNewGift(action) {
+    yield put(showLoading())
+    const data = yield call(managerGift.getAPINewGift, action.payload)
+    if (data.statusCode === FETCH_DATA_SUCCESS) {
+        yield put(getListGift())
+        yield put(getStatusNew(data.statusCode))
+    } else {
+        yield put(getStatusNew(data.statusCode))
+    }
+    yield delay(300)
+    yield put(hiddenLoading())
+}
+
+function* trackingGetEditGift(action) {
+    yield put(showLoading())
+    const data = yield call(managerGift.getAPIEditGift, action.payload)
+    if (data.statusCode === FETCH_DATA_SUCCESS) {
+        yield put(getListGift())
+        yield put(getStatusEditGift(data.statusCode))
+    } else {
+        yield put(getStatusEditGift(data.statusCode))
+    }
+    yield delay(300)
+    yield put(hiddenLoading())
+}
+
+function* trackingDeleteGift(action) {
+    yield put(showLoading())
+    const data = yield call(managerGift.getAPIDeleteGift, action.payload)
+    if (data.statusCode === FETCH_DATA_SUCCESS) {
+        yield put(getListGift())
+        yield put(getStatusDeleteGift(data.statusCode))
+    } else {
+        yield put(getStatusDeleteGift(data.statusCode))
+    }
+    yield delay(300)
+    yield put(hiddenLoading())
+}
+
 function* managerSaga() {
     // user
     yield takeEvery(getUser, trackingGetAllUser)
@@ -254,12 +344,21 @@ function* managerSaga() {
     yield takeEvery(deleteMove, trackingDeleteMovies)
 
     // movies time
-    yield takeEvery([getMovieTime, getDateSelect, getTheaterSelect, getNewPage], trackingGetNumberMoviesTime)
+    yield takeEvery([getMovieTime, getDateSelect, getTheaterSelect], trackingGetNumberMoviesTime)
     yield takeEvery(getNameMovieTime, trackingGetListNameMoviesTime)
     yield takeEvery(getTheater, trackingGetAllTheater)
     yield takeEvery(getDate, trackingGetAllDate)
     yield takeEvery(newMovieTime, trackingGetNewMovie)
     yield takeEvery(deleteMovieTime, trackingDeleteMovieTime)
+
+    // gift
+    yield takeEvery(getGiftWeek, trackingGetAllWeek)
+    yield takeEvery(getGiftMonth, trackingGetAllMonth)
+    yield takeEvery(getGiftYear, trackingGetAllYear)
+    yield takeEvery(getListGift, trackingGetAllListGift)
+    yield takeEvery(getNewGift, trackingGetNewGift)
+    yield takeEvery(editGift, trackingGetEditGift)
+    yield takeEvery(deleteGift, trackingDeleteGift)
 }
 
 export default managerSaga
