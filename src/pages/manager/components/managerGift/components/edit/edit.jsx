@@ -80,7 +80,7 @@ function Edit({ itemGift, open, close }) {
                         <h5>{MANAGER.gift.title_add_desc}</h5>
                         <input type="text" {...register("description", { required: true })} placeholder={MANAGER.gift.placeholder_add_desc} />
                         {errors.description && <span>{MANAGER.gift.empty_input}</span>}
-                    </F.ModalItem >
+                    </F.ModalItem>
 
                     <F.ModalItem theme={theme}>
                         <h5>{MANAGER.gift.title_add_date_start}</h5>
@@ -105,13 +105,13 @@ function Edit({ itemGift, open, close }) {
                         <input type="number" {...register("price", { required: true })} placeholder={MANAGER.gift.placeholder_add_price} />
                         {errors.price && <span>{MANAGER.gift.empty_input}</span>}
                     </F.ModalItem>
-                </ModalBody >
+                </ModalBody>
                 <ModalFooter>
                     <Button type="submit">{MANAGER.gift.btn_create}</Button>
                     <Button onClick={() => close(false)}>{MANAGER.gift.btn_close}</Button>
                 </ModalFooter>
-            </F.Form >
-        </Modal >
+            </F.Form>
+        </Modal>
     );
 }
 
