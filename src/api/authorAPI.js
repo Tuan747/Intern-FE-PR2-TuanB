@@ -27,6 +27,11 @@ const authorAPI = {
         const url = `/ticket/history`
         return axiosClient.get(url, config)
     },
+
+    getRegister: (body) => {
+        const url = '/account/register'
+        return axiosClient.post(url, body)
+    },
 }
 
 export default authorAPI
