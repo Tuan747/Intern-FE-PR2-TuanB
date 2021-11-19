@@ -1,4 +1,5 @@
 import { all } from 'redux-saga/effects'
+import searchSaga from '../components/Search/searchSaga';
 import authorSaga from '../pages/author/authorSaga';
 import managerSaga from '../pages/manager/managerSaga';
 import MovieSaga from '../pages/movies/moviesSaga';
@@ -12,6 +13,7 @@ function* rootSaga() {
         ticketSaga(),
         paymentSaga(),
         managerSaga(),
+        searchSaga(),
     ]);
 }
 
