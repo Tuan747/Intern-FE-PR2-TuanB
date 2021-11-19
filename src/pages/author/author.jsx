@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Col, Container, Row } from 'reactstrap';
-import iconRegister from '../../resourses/img/icon-register.png'
-import iconLogin from '../../resourses/img/icon-login.png'
 import iconCall from '../../resourses/img/icon-call.png'
 import * as S from './style-author'
 import { theme } from '../../styles/theme'
@@ -10,12 +8,11 @@ import Login from './components/login/login';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUser } from './authorSlice';
 import User from '../user/user';
+import Register from './components/register/register';
 
 function Author() {
-    const { isLogin } = useSelector((state) => state.author)
     const dispatch = useDispatch()
-    const [toggleRegister, setToggleRegister] = useState(false);
-    const [toggleLogin, setToggleLogin] = useState(false);
+    const { isLogin } = useSelector((state) => state.author)
 
     //check token if have call api with only token
     useEffect(() => {
@@ -24,33 +21,15 @@ function Author() {
         }
     }, [dispatch])
 
-    const handleToggleRegister = () => {
-        setToggleRegister(!toggleRegister)
-        setToggleLogin(false);
-    }
-
-    const handleToggleLogin = () => {
-        setToggleLogin(!toggleLogin)
-        setToggleRegister(false);
-    }
-
-    return (
+    return (<>
         <S.Author>
             <Container>
                 <Row className="align-items-center" style={{ display: isLogin ? 'none' : 'flex' }}>
                     <Col lg={3}>
-                        <S.BtnAuthor theme={theme}>
-                            <img src={iconRegister} alt="Register" />
-                            <span onClick={handleToggleRegister}>{AUTHORS.register}</span>
-                            {toggleRegister ? <>ok </> : ''}
-                        </S.BtnAuthor>
+                        <Register />
                     </Col>
                     <Col lg={3}>
-                        <S.BtnAuthor theme={theme}>
-                            <img src={iconLogin} alt="Login" />
-                            <span theme={theme} onClick={handleToggleLogin}>{AUTHORS.login}</span>
-                            {toggleLogin ? <Login /> : ''}
-                        </S.BtnAuthor>
+                        <Login />
                     </Col>
                     <Col lg={6}>
                         <S.Phone theme={theme}>
@@ -61,11 +40,11 @@ function Author() {
                 </Row>
 
                 <Row className="align-items-center" style={{ display: isLogin ? 'flex' : 'none' }}>
-                    <User onToggleLogin={handleToggleLogin} />
+                    <User />
                 </Row>
             </Container>
         </S.Author >
-    );
+    </>);
 }
 
 export default Author;
