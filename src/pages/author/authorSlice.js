@@ -8,6 +8,7 @@ const author = createSlice({
         dataUser: '',
         status: null,
         history: [],
+        registerSuccess: null,
     },
     reducers: {
         getUser: () => {
@@ -53,9 +54,25 @@ const author = createSlice({
                 history: action.payload
             }
         },
+
+        getRegister: () => { },
+
+        registerSuccess: (state, action) => {
+            return {
+                ...state,
+                registerSuccess: action.payload
+            }
+        },
+
+        clearStatusRegister: (state, action) => {
+            return {
+                ...state,
+                registerSuccess: null
+            }
+        },
     }
 })
 
 const { actions, reducer } = author
-export const { getValueLogin, getDataUser, getStatus, getUser, logOut, getHistory, getAllHistory } = actions;
+export const { getValueLogin, getDataUser, getStatus, getUser, logOut, getHistory, getAllHistory, getRegister, registerSuccess, clearStatusRegister } = actions;
 export default reducer;
