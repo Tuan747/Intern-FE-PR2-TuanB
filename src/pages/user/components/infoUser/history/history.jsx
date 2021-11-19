@@ -5,13 +5,14 @@ import { Col, Container, Row, Table } from 'reactstrap';
 import { AUTHORS, FETCH_DATA_SUCCESS, TAB_HISTORY_USER } from '../../../../../constants';
 import { theme } from '../../../../../styles/theme';
 import { getHistory } from '../../../../author/authorSlice';
-import { clearPaymentSuccess, rePayment } from '../../../../ticket/components/InfoPayment/InfoPaymentSlice';
+import { clearPaymentSuccess, paymentReset, rePayment } from '../../../../ticket/components/InfoPayment/InfoPaymentSlice';
+import { resetSeats } from '../../../../ticket/ticketSlice';
 import * as F from '../styled-infoUSer'
 
 function History({ tab }) {
     const dispatch = useDispatch()
     const { history } = useSelector((state) => state.author)
-    const { paymentSuccess } = useSelector((state) => state.payment)
+    const { paymentSuccess, infoPayment } = useSelector((state) => state.payment)
     const notifyPaymentSuccess = () => toast.success(AUTHORS.history.notify_payment_success);
 
     useEffect(() => {
@@ -28,6 +29,15 @@ function History({ tab }) {
             }
         }
     }, [paymentSuccess, dispatch, tab])
+
+    useEffect(() => {
+        if (infoPayment.link?.length > 0) {
+            window.open(infoPayment.link)
+            dispatch(paymentReset())
+            dispatch(resetSeats())
+            window.location.reload();
+        }
+    }, [dispatch, infoPayment.link])
 
     const handleClickRepayment = (item) => {
         dispatch(rePayment(item))

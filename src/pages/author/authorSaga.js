@@ -46,7 +46,6 @@ function* trackingGetHistory() {
 function* trackingRegisterSuccess(action) {
     yield put(showLoading())
     const data = yield call(authorAPI.getRegister, action.payload)
-    console.log(data);
     if (data.statusCode === FETCH_DATA_SUCCESS) {
         yield put(registerSuccess(data.statusCode))
     } else {

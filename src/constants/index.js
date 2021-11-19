@@ -27,6 +27,15 @@ export const MOVIES = {
         line5: 'Đánh giá:',
     }
 }
+export const PROMOTION = {
+    notify_required_login: 'Yêu cầu đăng nhập',
+    notify_get_gift_success: 'Đổi thành công',
+    notify_get_gift_error: 'Điểm của bạn không đủ',
+    notify_out_gift: 'Mã hết hãy chọn mã khác',
+    btn_out_gift: 'Hết mã',
+    btn_gift: 'Đổi',
+    empty_promotion: 'Hiện tại chưa có mã nào',
+}
 export const TICKET = {
     theater: 'Chọn rạp',
     date: 'Chọn ngày',
