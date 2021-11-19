@@ -16,6 +16,17 @@ const authorAPI = {
         const url = `/account/me`
         return axiosClient.get(url, config)
     },
+
+    getHistory: () => {
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+                'auth-token': localStorage.getItem('token')
+            }
+        }
+        const url = `/ticket/history`
+        return axiosClient.get(url, config)
+    },
 }
 
 export default authorAPI

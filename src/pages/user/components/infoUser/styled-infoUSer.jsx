@@ -78,5 +78,33 @@ export const TabItem = styled.div`
             background: #dfdcdc;
         }
     }
-`;
 
+    .item__history {
+        position: relative;
+        left: 0px;
+        transition: ease-in-out .3s;
+
+        &--detail {
+            display: none;
+            position: absolute;
+            background: #f18720;
+            width: 13rem;
+            height: 20rem;
+            border-radius: 10px;
+            padding: 25px;
+            transition: ease-in-out .3s;
+        }
+
+        .seat {
+            display: inline-block;
+        }
+
+        &:hover {
+            left: 10px;
+        }
+
+        &:hover > .item__history--detail{
+            display: block;
+        }
+    }
+`;

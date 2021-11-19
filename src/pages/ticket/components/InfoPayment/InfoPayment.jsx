@@ -4,9 +4,9 @@ import React, { useEffect, useState } from 'react';
 import { Col, DropdownItem, DropdownMenu, DropdownToggle, Row, UncontrolledDropdown } from 'reactstrap';
 import * as S from './style-InfoPayment'
 import { theme } from '../../../../styles/theme';
-import { AUTHORS, METHOD_PAYMENT_MOMO, TICKET } from '../../../../constants';
+import { AUTHORS, FETCH_DATA_SUCCESS, METHOD_PAYMENT_MOMO, TICKET } from '../../../../constants';
 import { useDispatch, useSelector } from 'react-redux';
-import { paymentMethod, getPayment, paymentReset } from './InfoPaymentSlice';
+import { paymentMethod, getPayment, paymentReset, clearPaymentSuccess } from './InfoPaymentSlice';
 import { toast } from 'react-toastify';
 import { addGift, resetSeats } from '../../ticketSlice';
 
@@ -18,10 +18,11 @@ function InfoPayment({ nameTheater }) {
     const { name, length } = useSelector((state) => state.movies.detailMovie)
     const { idDate, idHours, seatSelect, allSeats, price, gift_code, number_ticket } = useSelector((state) => state.ticket)
     const { isLogin, dataUser } = useSelector((state) => state.author)
-    const { infoPayment } = useSelector((state) => state.payment)
+    const { infoPayment, paymentSuccess } = useSelector((state) => state.payment)
 
     const notifyLogin = () => toast.error(AUTHORS.required_login);
     const notifyMethodPayment = () => toast.error(TICKET.required_method);
+    const notifyPaymentSuccess = () => toast.success(AUTHORS.history.notify_payment_success);
 
     useEffect(() => {
         if (infoPayment.link?.length > 0) {
@@ -31,6 +32,13 @@ function InfoPayment({ nameTheater }) {
             window.location.reload();
         }
     }, [dispatch, infoPayment.link])
+
+    useEffect(() => {
+        if (paymentSuccess === FETCH_DATA_SUCCESS) {
+            notifyPaymentSuccess()
+            dispatch(clearPaymentSuccess())
+        }
+    }, [paymentSuccess, dispatch])
 
     const handleGetMethod = (method) => {
         setMethod(method)
