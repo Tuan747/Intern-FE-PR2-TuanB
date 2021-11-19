@@ -5,6 +5,7 @@ export const theme = {
     text_orange: '#F18720',
     text_main: '#e00d7a',
     text_error: 'red',
+    text_Gift: '#7c2665',
 
     bg_main: '#4E0045',
     bg_main_fading: '#542F50',

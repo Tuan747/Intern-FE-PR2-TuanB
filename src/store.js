@@ -10,6 +10,7 @@ import paymentReducer from './pages/ticket/components/InfoPayment/InfoPaymentSli
 import adminReducer from './pages/manager/managerSlice'
 import paginationReducer from './components/Pagination/pagiSlice'
 import searchReducer from './components/Search/searchSlice'
+import promotionReducer from './pages/promotion/promotionSlice'
 
 const rootReducer = {
     movies: moviesReducer,
@@ -21,6 +22,7 @@ const rootReducer = {
     manager: adminReducer,
     pagination: paginationReducer,
     search: searchReducer,
+    promotion: promotionReducer,
 }
 
 const sagaMiddleware = createSagaMiddleware()
