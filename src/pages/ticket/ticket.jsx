@@ -7,7 +7,7 @@ import { theme } from '../../styles/theme';
 import { getSlug } from '../movies/moviesSlice';
 import Seats from './components/seats/seats';
 import * as S from './style-ticket';
-import { getIdMovies, getIdTheater, getTheater, getDates, getHours, getIdDate, resetHours, resetDate, getIdHours, getSeats, resetSeats } from './ticketSlice';
+import { getIdMovies, getIdTheater, getTheater, getDates, getHours, getIdDate, resetHours, resetDate, getIdHours, getSeats, resetSeats, clearAllTicket } from './ticketSlice';
 
 function Ticket() {
     const params = useParams()
@@ -23,6 +23,11 @@ function Ticket() {
         dispatch(getSlug(params.slug))
         dispatch(getTheater())
         dispatch(getIdMovies(_id))
+
+        //clear when unmount
+        return () => {
+            dispatch(clearAllTicket())
+        }
     }, [dispatch, params.slug, _id])
 
     const handleClickTheater = (id, name) => {
@@ -64,17 +69,17 @@ function Ticket() {
     const theaterRender =
         allTheater.length ? allTheater.map((theater, i) => (
             <DropdownItem key={i} onClick={() => handleClickTheater(theater._id, theater.name)}>{theater.name}</DropdownItem>
-        )) : ''
+        )) : 'Chưa có dữ liệu'
 
     const datesRender =
         allDates.length ? allDates.map((date, i) => (
             <DropdownItem key={i} onClick={() => handleClickDates(date)}>{new Date(date).toLocaleDateString()}</DropdownItem>
-        )) : ''
+        )) : 'Chưa có dữ liệu'
 
     const hoursRender =
         allHours.length ? allHours.map((hour, i) => (
             <DropdownItem key={i} onClick={() => handleClickHours(hour)}>{hour}</DropdownItem>
-        )) : ''
+        )) : 'Chưa có dữ liệu'
 
     return (
         <S.TimeMovie theme={theme}>
@@ -84,7 +89,7 @@ function Ticket() {
                         <S.Image src={image} alt={name} />
                     </Col>
                     <Col lg={7} className="text-center">
-                        <S.Title>{name}</S.Title>
+                        <S.Title theme={theme}>{name}</S.Title>
                         <Row>
                             <Col lg={4}>
                                 <UncontrolledDropdown>

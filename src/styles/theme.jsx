@@ -14,6 +14,7 @@ export const theme = {
     bg_black: '#000000',
     bg_orange: '#F18720',
     bg_white: '#fff',
+    bg_white_fading: '#dfdcdc',
     bg_hover: '#BC92B1',
     bg_available_seat: '#E00D7A',
     bg_disabled_seat: '#c5bebe',
@@ -30,6 +31,7 @@ export const theme = {
     border_form: '#fec',
     border_orange: '#F18720',
 
+    size_text_m: '10px',
     size_text_l: '12px',
     size_text_xl: '18px',
     size_text_2xl: '20px',
@@ -44,4 +46,21 @@ export const theme = {
             flex-direction: ${$direction};
         `
     }
+};
+
+const size = {
+    mobile: '575px',
+    mobileL: '767px',
+    tablet: '768px',
+    tabletL: '991px',
+    laptop: '992px',
+    laptopL: '1199.98px',
+    large: '1200px'
+}
+
+export const device = {
+    mobile: `(max-width: ${size.mobile}) and (max-width: ${size.mobileL})`,
+    tablet: `(min-width: ${size.tablet}) and (max-width: ${size.tabletL})`,
+    laptop: `(min-width: ${size.laptop}) and (max-width: ${size.laptopL})`,
+    large: `(min-width: ${size.large})`,
 };

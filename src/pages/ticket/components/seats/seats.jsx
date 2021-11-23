@@ -32,7 +32,7 @@ function Seats({ nameTheater }) {
                     {
                         seats?.map(({ available, id, _id }) => {
                             return (
-                                <Col lg={1} key={_id}>
+                                <Col className="mb-2" xs={2} lg={1} key={_id}>
                                     <S.SeatSelect
                                         theme={theme}
                                         onClick={() => handleGetSeatsSelect(id, available)}
@@ -56,15 +56,15 @@ function Seats({ nameTheater }) {
         </S.SeatContainer>
         <S.Desc>
             <Row>
-                <Col lg={4}>
+                <Col xs={4}>
                     <S.DescBox bg={'#c5bebe'} />
                     <S.DescText theme={theme}>{TICKET.seat_disabled}</S.DescText>
                 </Col>
-                <Col lg={4}>
+                <Col xs={4}>
                     <S.DescBox bg={'#E00D7A'} />
                     <S.DescText theme={theme}>{TICKET.seat_available}</S.DescText>
                 </Col>
-                <Col lg={4}>
+                <Col xs={4}>
                     <S.DescBox bg={'#4E0045'} />
                     <S.DescText theme={theme}>{TICKET.seat_selected}</S.DescText>
                 </Col>

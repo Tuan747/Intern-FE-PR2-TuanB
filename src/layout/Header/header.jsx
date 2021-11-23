@@ -11,10 +11,10 @@ function Header() {
     return (<>
         <Container >
             <Row>
-                <Col lg={6}>
+                <Col xs={12} lg={6}>
                     <S.Img src={logo} alt="Logo" />
                 </Col>
-                <Col lg={6}>
+                <Col xs={12} lg={6}>
                     <Search />
                     <Navbar />
                 </Col>

@@ -48,12 +48,12 @@ function ManagerMovies({ tabChange }) {
             const { name, date, length, playing } = item
             return (
                 <tr key={index}>
-                    <th scope="row">{index + 1}</th>
-                    <td>{name}</td>
-                    <td>{new Date(date.date_start).toLocaleDateString()}</td>
-                    <td>{length}</td>
-                    <td>{playing ? 'Có' : 'Không'}</td>
-                    <td className='select'>
+                    <th scope="row" className="d-none d-sm-block">{index + 1}</th>
+                    <td data-label={MANAGER.movies.table_name}>{name}</td>
+                    <td data-label={MANAGER.movies.table_date}>{new Date(date.date_start).toLocaleDateString()}</td>
+                    <td data-label={MANAGER.movies.table_length}>{length}</td>
+                    <td data-label={MANAGER.movies.table_status}>{playing ? 'Có' : 'Không'}</td>
+                    <td className='select' data-label={MANAGER.movies.table_action}>
                         <FontAwesomeIcon icon={faEllipsisV} />
                         <div className='option'>
                             <F.BtnDelete theme={theme} onClick={() => handleEdit(item)} >{MANAGER.movies.title_edit}</F.BtnDelete>
@@ -69,31 +69,31 @@ function ManagerMovies({ tabChange }) {
             <h1>{MANAGER.movies.title}</h1>
             <Add />
             <Row>
-                <Col lg={4}>
+                <Col xs={4} lg={4}>
                     <F.ContentBox theme={theme}>
                         <F.TitleBox theme={theme}>{MANAGER.movies.nowMoviesTitle}</F.TitleBox>
                         <F.NumberBox theme={theme}>
-                            <F.Icon><FontAwesomeIcon icon={faVideo} /></F.Icon>
+                            <F.Icon theme={theme}><FontAwesomeIcon icon={faVideo} /></F.Icon>
                             <span>+{moviesNumberPlaying}</span>
                         </F.NumberBox>
                     </F.ContentBox>
                 </Col>
-                <Col lg={4}>
+                <Col xs={4} lg={4}>
                     <F.ContentBox theme={theme}>
                         <F.TitleBox theme={theme}>{MANAGER.movies.commingMoviesTitle}</F.TitleBox>
                         <F.NumberBox theme={theme}>
-                            <F.Icon>
+                            <F.Icon theme={theme}>
                                 <FontAwesomeIcon icon={faVideo} />
                             </F.Icon>
                             <span>+{moviesNumberComming}</span>
                         </F.NumberBox>
                     </F.ContentBox>
                 </Col>
-                <Col lg={4}>
+                <Col xs={4} lg={4}>
                     <F.ContentBox theme={theme}>
                         <F.TitleBox theme={theme}>{MANAGER.movies.totalMovies}</F.TitleBox>
                         <F.NumberBox theme={theme}>
-                            <F.Icon>
+                            <F.Icon theme={theme}>
                                 <FontAwesomeIcon icon={faVideo} />
                             </F.Icon>
                             <span>+{moviesNumberTotal}</span>

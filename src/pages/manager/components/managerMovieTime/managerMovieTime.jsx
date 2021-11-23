@@ -74,12 +74,12 @@ function ManagerMovieTime({ tabChange }) {
             const { date, hour, price } = movie.movietime
             return (
                 <tr key={index}>
-                    <th scope="row">{index + 1}</th>
-                    <td>{nameMovie || filter.name?.name}</td>
-                    <td>{new Date(date).toLocaleDateString()}</td>
-                    <td>{hour}</td>
-                    <td>{price}</td>
-                    <td className='select'>
+                    <th scope="row" className="d-none d-sm-block">{index + 1}</th>
+                    <td data-label={MANAGER.movie_time.table_name}>{nameMovie || filter.name?.name}</td>
+                    <td data-label={MANAGER.movie_time.table_date}>{new Date(date).toLocaleDateString()}</td>
+                    <td data-label={MANAGER.movie_time.table_hours}>{hour}</td>
+                    <td data-label={MANAGER.movie_time.table_price}>{price}</td>
+                    <td data-label={MANAGER.movie_time.table_action} className='select'>
                         <FontAwesomeIcon icon={faEllipsisV} />
                         <div className='option' onClick={() => handleDeleteMovie(movie._id)}>
                             <F.BtnDelete theme={theme}>{MANAGER.movie_time.btn_delete}</F.BtnDelete>
@@ -99,7 +99,7 @@ function ManagerMovieTime({ tabChange }) {
                         <F.ContentBox theme={theme}>
                             <F.TitleBox theme={theme}>{MANAGER.movie_time.title_total_time}</F.TitleBox>
                             <F.NumberBox theme={theme}>
-                                <F.Icon>
+                                <F.Icon theme={theme}>
                                     <FontAwesomeIcon icon={faVideo} />
                                 </F.Icon>
                                 <span>+ {moviesTimeNumber.total || 0} </span>
@@ -109,7 +109,7 @@ function ManagerMovieTime({ tabChange }) {
                 </Row>
 
                 <Row>
-                    <Col lg={4}>
+                    <Col xs={12} lg={4}>
                         <UncontrolledDropdown>
                             <DropdownToggle caret theme={theme}>
                                 {filter.name ? nameMovie : MANAGER.movie_time.title_filter_name}
@@ -119,7 +119,7 @@ function ManagerMovieTime({ tabChange }) {
                             </DropdownMenu>
                         </UncontrolledDropdown>
                     </Col>
-                    <Col lg={4}>
+                    <Col xs={12} lg={4}>
                         <UncontrolledDropdown>
                             <DropdownToggle caret theme={theme}>
                                 {nameTheater || MANAGER.movie_time.title_filter_theater}
@@ -129,7 +129,7 @@ function ManagerMovieTime({ tabChange }) {
                             </DropdownMenu>
                         </UncontrolledDropdown>
                     </Col>
-                    <Col lg={4}>
+                    <Col xs={12} lg={4}>
                         <UncontrolledDropdown>
                             <DropdownToggle caret theme={theme}>
                                 {nameDate || MANAGER.movie_time.title_filter_date}
