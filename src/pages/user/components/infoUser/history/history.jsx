@@ -45,17 +45,17 @@ function History({ tab }) {
 
     return (
         <Container style={{ display: tab === TAB_HISTORY_USER ? 'block' : 'none' }}>
-            <F.TabItem>
+            <F.TabItem theme={theme}>
                 <Row className="justify-content-center">
-                    <Col lg={10}>
+                    <Col xs={12} lg={10}>
                         <Table dark>
                             <thead>
                                 <tr>
                                     <th>{AUTHORS.history.title_table_no}</th>
                                     <th>{AUTHORS.history.title_table_name}</th>
-                                    <th>{AUTHORS.history.title_table_status}</th>
+                                    <th >{AUTHORS.history.title_table_status}</th>
                                     <th>{AUTHORS.history.title_table_price}</th>
-                                    <th>{AUTHORS.history.title_table_date_start}</th>
+                                    <th >{AUTHORS.history.title_table_date_start}</th>
                                     <th>{AUTHORS.history.title_table_method}</th>
                                     <th>{AUTHORS.history.title_table_action}</th>
                                 </tr>
@@ -65,12 +65,12 @@ function History({ tab }) {
                                     const { namemovie, status, price, date, paid, theater, hour, seat } = item
                                     return (<>
                                         <tr key={index} className="item__history">
-                                            <th scope="row">{index + 1}</th>
-                                            <td>{namemovie}</td>
-                                            <td>{(status && AUTHORS.history.status_pending) || AUTHORS.history.status_exit}</td>
-                                            <td>{price}</td>
-                                            <td>{new Date(date).toLocaleDateString()}</td>
-                                            <td>{(paid && AUTHORS.history.paid_succeed) || AUTHORS.history.paid_exit}</td>
+                                            <th data-label={AUTHORS.history.title_table_no} scope="row">{index + 1}</th>
+                                            <td data-label={AUTHORS.history.title_table_name}>{namemovie}</td>
+                                            <td data-label={AUTHORS.history.title_table_status}>{(status && AUTHORS.history.status_pending) || AUTHORS.history.status_exit}</td>
+                                            <td data-label={AUTHORS.history.title_table_price}>{price}</td>
+                                            <td data-label={AUTHORS.history.title_table_date_start}>{new Date(date).toLocaleDateString()}</td>
+                                            <td data-label={AUTHORS.history.title_table_method}>{(paid && AUTHORS.history.paid_succeed) || AUTHORS.history.paid_exit}</td>
                                             <td className='select'>
                                                 {(status && paid) || status === false
                                                     ? <button theme={theme}>{AUTHORS.history.btn_delete}</button>

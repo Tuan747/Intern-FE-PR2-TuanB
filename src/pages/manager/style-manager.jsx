@@ -1,8 +1,13 @@
 import styled from "styled-components";
+import { device } from "../../styles/theme"
 
 export const Admin = styled.div`
     background: ${props => props.theme.bg_available_seat};
     padding: 30px;
+
+    @media ${device.mobile} {
+        padding: 0;
+    }
 `;
 
 export const TabContent = styled.ul`
@@ -10,6 +15,13 @@ export const TabContent = styled.ul`
     color: ${props => props.theme.text_white};
     border-radius: 15px;
     overflow: hidden;
+    
+    @media ${device.mobile} {
+        ${props => props.theme.dFlex('center', 'center', 'none')};
+        border-radius: 5px;
+        margin: 5px 0;
+    }
+
     .admin__tab-active {
         background: ${props => props.theme.bg_yellow};
         color: ${props => props.theme.text_black};
@@ -18,12 +30,24 @@ export const TabContent = styled.ul`
 `;
 
 export const TabItem = styled.li`
+    font-size: ${props => props.theme.size_text_l};
     padding: 20px 30px;
     transition: ease-in-out .3s;
-    font-size: ${props => props.theme.size_text_l};
     cursor: pointer;
+
+    @media ${device.mobile} {
+        font-size: ${props => props.theme.size_text_m};
+        padding: 10px 5px;
+        width: 25%;
+        text-align: center;
+    }
+
     svg {
         margin-right: 20px;
+
+        @media ${device.mobile} {
+            margin-right: 0;
+    }
     }
     
     &:hover {
@@ -38,14 +62,61 @@ export const ManagerBox = styled.div`
     background: ${props => props.theme.bg_main};
     padding: 30px;
     border-radius: 15px;
+
+    @media ${device.mobile} {
+        border-radius: 5px;
+    }
+
     th, td {
         text-align: center;
     }
+
+    @media ${device.mobile} {
+        table {
+            border-collapse: collapse;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            table-layout: fixed;
+
+                thead {
+                    display: none;
+                }
+
+                tr {
+                    display: block;
+                    margin-bottom: 5px;
+                }
+
+                td {
+                    display: block;
+                    font-size: 10px;
+                    text-align: right;
+
+                    &::before {
+                        content: attr(data-label);
+                        float: left;
+                        font-weight: bold;
+                        text-transform: uppercase;
+                    }
+
+                    &:last-child {
+                        border-bottom: 0;
+                    }
+                }
+        }
+    }
+    
     h1 {
         font-size: ${props => props.theme.size_text_4xl};
         text-align: center;
         margin-bottom: 20px;
+
+        @media ${device.mobile} {
+            font-size: ${props => props.theme.size_text_l};
+        }
     }
+
     .dropdown-toggle {
         width: 100%;
         border-radius: 30px 0px 30px 0px;
@@ -56,9 +127,10 @@ export const ManagerBox = styled.div`
             background: ${props => props.theme.bg_main};
         }
     }
+
     .dropdown-menu {
-        width: 100%;
         background: ${props => props.theme.bg_hover};
+        width: 100%;
         padding: 0;
         
         .dropdown-item {
@@ -69,8 +141,10 @@ export const ManagerBox = styled.div`
             }
         }
     }
+
     .select {
         position: relative;
+
         &:hover > .option {
             display: block;
         }
@@ -92,6 +166,12 @@ export const ContentBox = styled.div`
     padding: 20px;
     border-radius: 20px;
     margin-bottom: 20px;
+
+    @media ${device.mobile} {
+        font-size: ${props => props.theme.size_text_m};
+        padding: 5px;
+        border-radius: 10px;
+    }
 `;
 
 export const TitleBox = styled.div`
@@ -112,6 +192,12 @@ export const Icon = styled.div`
     border-radius: 100%;
     line-height: 40px;
     text-align: center;
+
+    @media ${device.mobile} {
+        ${props => props.theme.dFlex('center', 'center', 'none')}
+        width: 20px;
+        height: 20px;
+    }
 `;
 
 export const BtnDelete = styled.button`
@@ -136,6 +222,12 @@ export const Add = styled.div`
     transition: ease-in-out .3s;
     width: 20%;
     margin: 0 auto 20px auto;
+
+    @media ${device.mobile} {
+        font-size: ${props => props.theme.size_text_m};
+        width: auto;
+    }
+
     &:hover {
         color: red;
     }
@@ -154,8 +246,8 @@ export const Form = styled.form`
 export const ModalItem = styled.div`
     margin-top: 20px;
     h5 {
-        font-size: 16px;
         color: ${props => props.theme.text_orange};
+        font-size: 16px;
     }
     input {
         font-size: 16px;

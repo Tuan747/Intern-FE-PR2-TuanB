@@ -23,19 +23,34 @@ function Search() {
                         return <FontAwesomeIcon key={index} icon={faStar} />
                     })
                     return (
-                        <Col lg={6} key={index}>
+                        <Col xs={6} lg={6} key={index}>
                             <F.Movie theme={theme}>
                                 <F.Image src={image} alt={name} theme={theme} />
                                 <F.Content>
                                     <F.Title theme={theme}>{name}</F.Title>
-                                    <F.Desc>{decription}</F.Desc>
-                                    <F.Rating theme={theme}>{handleShowRating}</F.Rating>
+                                    <F.Desc className="d-none d-sm-block">{decription}</F.Desc>
+                                    <F.Rating className="d-none d-sm-block" theme={theme}>{handleShowRating}</F.Rating>
                                     <F.Control>
-                                        <F.BtnControl theme={theme} border={'0 30px 30px 30px'} bg={'rgba(0,0,0,0.5)'} href={trailer} target="_blank" rel="nonpener noreferrer">
+                                        <F.BtnControl
+                                            theme={theme}
+                                            border={'0 30px 30px 30px'}
+                                            borderResponsive={'0 0 0 14px'}
+                                            bg={'rgba(0,0,0,0.5)'}
+                                            href={trailer}
+                                            target="_blank"
+                                            rel="nonpener noreferrer"
+                                        >
                                             {MOVIES.trailer}
                                         </F.BtnControl>
 
-                                        <F.BtnControl theme={theme} border={'30px 0 30px 30px'} left={'-35px'} bg={'#f18720'}>
+                                        <F.BtnControl
+                                            theme={theme}
+                                            border={'30px 0 30px 30px'}
+                                            borderResponsive={'30px 0 30px 30px'}
+                                            left={'-35px'}
+                                            leftResponsive={'-14px'}
+                                            bg={'#f18720'}
+                                        >
                                             <NavLink to={`/detailphim/${slug}`}>{MOVIES.byeTicket}</NavLink>
                                         </F.BtnControl>
                                     </F.Control>

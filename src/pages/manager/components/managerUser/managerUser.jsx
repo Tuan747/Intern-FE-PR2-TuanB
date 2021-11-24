@@ -39,10 +39,10 @@ function ManagerUser({ tabChange }) {
             const { name, date, email, _id } = item
             return (
                 <tr key={index}>
-                    <th scope="row">{index + 1}</th>
-                    <td>{name}</td>
-                    <td>{new Date(date).toLocaleDateString()}</td>
-                    <td>{email}</td>
+                    <th scope="row" className="d-none d-sm-block">{index + 1}</th>
+                    <td data-label={MANAGER.user.table_name}>{name}</td>
+                    <td data-label={MANAGER.user.table_date}>{new Date(date).toLocaleDateString()}</td>
+                    <td data-label={MANAGER.user.table_email}>{email}</td>
                     <td>
                         <Delete id={_id} name={name} />
                     </td>
@@ -54,33 +54,33 @@ function ManagerUser({ tabChange }) {
         <F.ManagerBox theme={theme} style={{ display: TAB_ADMIN_USER === tabChange ? 'block' : 'none' }}>
             <h1>{MANAGER.user.title}</h1>
             <Row>
-                <Col lg={4}>
+                <Col xs={4} lg={4}>
                     <F.ContentBox theme={theme}>
                         <F.TitleBox theme={theme}>{MANAGER.user.title_week}</F.TitleBox>
                         <F.NumberBox theme={theme}>
-                            <F.Icon>
+                            <F.Icon theme={theme}>
                                 <FontAwesomeIcon icon={faUser} />
                             </F.Icon>
                             <span>+{userNumberInWeek}</span>
                         </F.NumberBox>
                     </F.ContentBox>
                 </Col>
-                <Col lg={4}>
+                <Col xs={4} lg={4}>
                     <F.ContentBox theme={theme}>
                         <F.TitleBox theme={theme}>{MANAGER.user.title_month}</F.TitleBox>
                         <F.NumberBox theme={theme}>
-                            <F.Icon>
+                            <F.Icon theme={theme}>
                                 <FontAwesomeIcon icon={faUser} />
                             </F.Icon>
                             <span>+{userNumberInMonth}</span>
                         </F.NumberBox>
                     </F.ContentBox>
                 </Col>
-                <Col lg={4}>
+                <Col xs={4} lg={4}>
                     <F.ContentBox theme={theme}>
                         <F.TitleBox theme={theme}>{MANAGER.user.title_year}</F.TitleBox>
                         <F.NumberBox theme={theme}>
-                            <F.Icon>
+                            <F.Icon theme={theme}>
                                 <FontAwesomeIcon icon={faUser} />
                             </F.Icon>
                             <span>+{userNumberInYear}</span>

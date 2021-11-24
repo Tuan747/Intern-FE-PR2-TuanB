@@ -30,7 +30,7 @@ function Manager() {
         <S.Admin theme={theme}>
             <Container>
                 <Row>
-                    <Col lg={3}>
+                    <Col xs={12} lg={3}>
                         <S.TabContent theme={theme}>
                             <S.TabItem theme={theme} onClick={() => handleChangeNewTab(TAB_ADMIN_USER)} className={classNames({ 'admin__tab-active': tab === TAB_ADMIN_USER })}><FontAwesomeIcon icon={faUserAlt} /> Quản lý người dùng</S.TabItem>
                             <S.TabItem theme={theme} onClick={() => handleChangeNewTab(TAB_ADMIN_MOVIE)} className={classNames({ 'admin__tab-active': tab === TAB_ADMIN_MOVIE })}><FontAwesomeIcon icon={faFilm} /> Quản lý phim</S.TabItem>
@@ -38,7 +38,7 @@ function Manager() {
                             <S.TabItem theme={theme} onClick={() => handleChangeNewTab(TAB_ADMIN_GIFT)} className={classNames({ 'admin__tab-active': tab === TAB_ADMIN_GIFT })}><FontAwesomeIcon icon={faGift} /> Quản lý quà tặng</S.TabItem>
                         </S.TabContent>
                     </Col>
-                    <Col lg={9}>
+                    <Col xs={12} lg={9}>
                         <ManagerUser tabChange={tabChange} />
                         <ManagerMovies tabChange={tabChange} />
                         <ManagerMovieTime tabChange={tabChange} />

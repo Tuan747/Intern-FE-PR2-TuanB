@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { device } from '../../../../styles/theme';
 
 export const TabChange = styled.div`
     height: 50px;
@@ -13,6 +14,8 @@ export const TabChangeContent = styled.ul`
     height: 100%;
     
     li {
+        background: ${props => props.theme.bg_orange};
+        color: ${props => props.theme.text_white};
         width: 25%;
         text-align: center;
         height: 100%;
@@ -21,12 +24,10 @@ export const TabChangeContent = styled.ul`
         cursor: pointer;
         font-weight: 700;
         transition: ease-in-out .4s;
-        background: #f18720;
-        color: white;
 
         &:hover {
-            background: #fecf06;
-            color: black;
+            background: ${props => props.theme.bg_yellow};
+            color: ${props => props.theme.text_black};
         }
 
         &:nth-child(1) {
@@ -40,18 +41,63 @@ export const TabChangeContent = styled.ul`
             border-radius: 0 15px 0 0;
             margin-left: -25px;
         }
+
+        @media ${device.mobile} {
+            width: 50%;
+            font-size: 10px;
+        }
     }
 
     .active {
-        background: #fecf06;
-        color: black;
+        background: ${props => props.theme.bg_yellow};
+        color: ${props => props.theme.text_black};
     }
 `;
 
 export const TabItem = styled.div`
+    background: ${props => props.theme.bg_yellow};
     padding: 10px;
-    background: #fecf06;
     border-radius: 5px;
+
+    @media ${device.mobile} {
+        font-size: ${props => props.theme.size_text_m};
+    }
+
+    @media ${device.mobile} {
+        table {
+            border-collapse: collapse;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            table-layout: fixed;
+
+                thead {
+                    display: none;
+                }
+
+                tr {
+                    display: block;
+                    margin-bottom: 5px;
+                }
+
+                td, th {
+                    display: block;
+                    font-size: 10px;
+                    text-align: right;
+
+                    &::before {
+                        content: attr(data-label);
+                        float: left;
+                        font-weight: bold;
+                        text-transform: uppercase;
+                    }
+
+                    &:last-child {
+                        border-bottom: 0;
+                    }
+                }
+        }
+    }
     
     span {
         display: block; 
@@ -62,20 +108,34 @@ export const TabItem = styled.div`
         display: block;
         margin: 0 auto;
         border-radius: 50%;
+
+        @media ${device.mobile} {
+            width: 60%;
+        }
     }
 
     div {
         margin: 25px 0px;
+
+        @media ${device.mobile} {
+            margin: 5px;
+        }
     }
 
     button {
+        background: ${props => props.theme.bg_white};
         padding: 12px 30px;
         border-radius: 20px 0 20px 0;
-        background: #fff;
         transition: ease-in-out .3s;
 
+        @media ${device.mobile} {
+            font-size: ${props => props.theme.size_text_l};
+            padding: 12px 15px;
+            width: 100%;
+        }
+
         &:hover {
-            background: #dfdcdc;
+            background: ${props => props.theme.bg_white_fading};
         }
     }
 
@@ -85,14 +145,21 @@ export const TabItem = styled.div`
         transition: ease-in-out .3s;
 
         &--detail {
+            background: ${props => props.theme.bg_orange};
             display: none;
             position: absolute;
-            background: #f18720;
             width: 13rem;
             height: 20rem;
             border-radius: 10px;
             padding: 25px;
             transition: ease-in-out .3s;
+
+            @media ${device.mobile} {
+                z-index: 1;
+                padding: 10px;
+                height: auto;
+                text-align: center;
+            }
         }
 
         .seat {

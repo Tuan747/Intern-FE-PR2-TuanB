@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Container } from 'reactstrap';
 import { AUTHORS, TAB_HISTORY_USER, TAB_INFO_USER } from '../../../../constants';
+import { theme } from '../../../../styles/theme';
 import DetailUser from './detailUser/detailUser';
 import History from './history/history';
 import * as S from './styled-infoUSer'
@@ -10,8 +11,8 @@ function InfoUser() {
 
     return (<>
         <Container>
-            <S.TabChange>
-                <S.TabChangeContent>
+            <S.TabChange theme={theme}>
+                <S.TabChangeContent theme={theme}>
                     <li
                         className={tabChange === TAB_INFO_USER ? 'active' : ''}
                         onClick={() => setTabChange(TAB_INFO_USER)}

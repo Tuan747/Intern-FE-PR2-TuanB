@@ -13,7 +13,7 @@ function DetailUser({ tab }) {
 
     return (
         <Container style={{ display: tab === TAB_INFO_USER ? 'block' : 'none' }}>
-            <F.TabItem>
+            <F.TabItem theme={theme}>
                 <Row>
                     <Col lg={6}>
                         <img src={avatar} alt="avatar" />

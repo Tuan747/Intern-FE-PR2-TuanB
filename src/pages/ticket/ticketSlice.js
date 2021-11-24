@@ -138,6 +138,24 @@ const ticket = createSlice({
             }
         },
 
+        clearAllTicket: (state, action) => {
+            return {
+                ...state,
+                idMovie: null,
+                allTheater: [],
+                idTheater: null,
+                allDates: [],
+                idDate: null,
+                allHours: [],
+                idHours: null,
+                allSeats: [],
+                seatSelect: [],
+                number_ticket: 0,
+                price: 0,
+                gift_code: null,
+            }
+        },
+
         error: (state, action) => {
             return {
                 ...state,
@@ -168,6 +186,7 @@ export const {
     removeSeatsSelect,
     resetHours,
     resetDate,
-    resetSeats
+    resetSeats,
+    clearAllTicket
 } = actions;
 export default reducer;

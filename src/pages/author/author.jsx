@@ -25,13 +25,13 @@ function Author() {
         <S.Author>
             <Container>
                 <Row className="align-items-center" style={{ display: isLogin ? 'none' : 'flex' }}>
-                    <Col lg={3}>
+                    <Col xs={6} lg={3}>
                         <Register />
                     </Col>
-                    <Col lg={3}>
+                    <Col xs={6} lg={3}>
                         <Login />
                     </Col>
-                    <Col lg={6}>
+                    <Col lg={6} className="d-none d-sm-block">
                         <S.Phone theme={theme}>
                             <img src={iconCall} alt="Phone" />
                             <a href='tel:028 7300 8881'>{AUTHORS.phone}</a>

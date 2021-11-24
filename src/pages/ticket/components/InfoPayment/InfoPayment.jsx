@@ -85,7 +85,7 @@ function InfoPayment({ nameTheater }) {
             <DropdownMenu>
                 {dataUser.gift_code?.length ? dataUser.gift_code.map((item, i) => {
                     return <DropdownItem key={i} onClick={() => handleGift(item)}>{item.code}</DropdownItem>
-                }) : ''}
+                }) : 'Hiện tại bạn chưa có mã gift'}
             </DropdownMenu>
         </UncontrolledDropdown>
 

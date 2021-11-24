@@ -46,14 +46,14 @@ function ManagerGift({ tabChange }) {
             const { _id, name, date, amount, available, point_to_get, value } = item
             return (
                 <tr key={_id}>
-                    <th scope="row">{index + 1}</th>
-                    <td>{name}</td>
-                    <td>{new Date(date.date_start).toLocaleDateString()}</td>
-                    <td>{new Date(date.date_end).toLocaleDateString()}</td>
-                    <td>{available}/{amount}</td>
-                    <td>{point_to_get}</td>
-                    <td>{value}</td>
-                    <td className='select'>
+                    <th scope="row" className="d-none d-sm-block">{index + 1}</th>
+                    <td data-label={MANAGER.gift.table_name}>{name}</td>
+                    <td data-label={MANAGER.gift.table_date_start}>{new Date(date.date_start).toLocaleDateString()}</td>
+                    <td data-label={MANAGER.gift.table_date_end}>{new Date(date.date_end).toLocaleDateString()}</td>
+                    <td data-label={MANAGER.gift.table_quantity}>{available}/{amount}</td>
+                    <td data-label={MANAGER.gift.table_point}>{point_to_get}</td>
+                    <td data-label={MANAGER.gift.table_price}>{value}</td>
+                    <td data-label={MANAGER.gift.table_action} className='select'>
                         <FontAwesomeIcon icon={faEllipsisV} />
                         <div className='option'>
                             <F.BtnDelete theme={theme} onClick={() => handleEditGift(item)}>{MANAGER.gift.btn_edit}</F.BtnDelete>
@@ -69,31 +69,31 @@ function ManagerGift({ tabChange }) {
             <h1>{MANAGER.gift.title}</h1>
             <Add />
             <Row>
-                <Col lg={4}>
+                <Col xs={4} lg={4}>
                     <F.ContentBox theme={theme}>
                         <F.TitleBox theme={theme}>{MANAGER.gift.title_week}</F.TitleBox>
                         <F.NumberBox theme={theme}>
-                            <F.Icon><FontAwesomeIcon icon={faGift} /></F.Icon>
+                            <F.Icon theme={theme}><FontAwesomeIcon icon={faGift} /></F.Icon>
                             <span>+ {numberWeek.number}</span>
                         </F.NumberBox>
                     </F.ContentBox>
                 </Col>
-                <Col lg={4}>
+                <Col xs={4} lg={4}>
                     <F.ContentBox theme={theme}>
                         <F.TitleBox theme={theme}>{MANAGER.gift.title_month}</F.TitleBox>
                         <F.NumberBox theme={theme}>
-                            <F.Icon>
+                            <F.Icon theme={theme}>
                                 <FontAwesomeIcon icon={faGift} />
                             </F.Icon>
                             <span>+ {numberMonth.number}</span>
                         </F.NumberBox>
                     </F.ContentBox>
                 </Col>
-                <Col lg={4}>
+                <Col xs={4} lg={4}>
                     <F.ContentBox theme={theme}>
                         <F.TitleBox theme={theme}>{MANAGER.gift.title_year}</F.TitleBox>
                         <F.NumberBox theme={theme}>
-                            <F.Icon>
+                            <F.Icon theme={theme}>
                                 <FontAwesomeIcon icon={faGift} />
                             </F.Icon>
                             <span>+ {numberYear.number}</span>

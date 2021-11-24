@@ -28,11 +28,11 @@ function DetailMovie() {
         <S.Detail>
             <Container>
                 <Row>
-                    <Col lg={6}>
+                    <Col xs={12} lg={6} className="mb-4">
                         <S.Image src={image} alt={name} theme={theme} />
                     </Col>
-                    <Col lg={6}>
-                        <S.ItemMovie>
+                    <Col xs={12} lg={6}>
+                        <S.ItemMovie theme={theme}>
                             <S.Title theme={theme}>{name}</S.Title>
                             <S.Info theme={theme}>
                                 <S.InfoTitle theme={theme}>{MOVIES.detail.line1}</S.InfoTitle>

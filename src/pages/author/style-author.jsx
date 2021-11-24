@@ -1,10 +1,16 @@
 import styled from "styled-components";
+import { device } from "../../styles/theme"
 
 export const Author = styled.div`
     height: 81px;
     padding: 10px 0;
     margin-top: 20px;
     background: url("https://cinestar.com.vn/catalog/view/theme/default/images/pattern.png");
+
+    @media ${device.mobile} {
+        height: auto;
+        padding: 5px 0;
+    }
 `;
 
 export const Phone = styled.div`
@@ -26,6 +32,17 @@ export const BtnAuthor = styled.div`
     ${props => props.theme.dFlex('center', 'flex-start', 'none')};
     cursor: pointer;
     position: relative;
+
+    @media ${device.mobile} {
+        justify-content: center
+    }
+
+    img {
+        @media ${device.mobile} {
+            width: 20%;
+        }
+    }
+
     span {
         margin-left: 15px;
         font-size: ${props => props.theme.size_text_xl};
@@ -33,6 +50,11 @@ export const BtnAuthor = styled.div`
         color: ${props => props.theme.text_main};
         font-weight: 700;
         transition: ease-in-out .3s;
+
+        @media ${device.mobile} {
+            font-size: 9px;
+            margin-left: 5px;
+        }
 
         &:hover {
             color: ${props => props.theme.text_orange};
