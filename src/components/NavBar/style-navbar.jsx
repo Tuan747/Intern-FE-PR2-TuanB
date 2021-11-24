@@ -33,6 +33,11 @@ export const LiNav = styled.li`
         font-size: ${props => props.theme.size_text_m};
         margin: 10px 0;
     }
+
+    @media ${device.tablet} {
+        font-size: ${props => props.theme.size_text_xl};
+        margin: 10px 0;
+    }
     
     a {
         ${props => props.theme.dFlex('center', 'center', 'none')};

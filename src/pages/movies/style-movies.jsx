@@ -4,6 +4,7 @@ import { device } from "../../styles/theme"
 export const Types = styled.div`
     ${props => props.theme.dFlex('center', 'center', 'none')};
     margin: 20px 0;
+
     @media ${device.mobile} {
         margin: 0;
     }
@@ -15,16 +16,21 @@ export const TypeSelect = styled.div`
     z-index: ${props => props.zIndex};
     background: ${props => props.theme.bg_orange};
     font-size: ${props => props.theme.size_text_4xl};
-    font-weight: 700;
     box-shadow: 10px 0 ${props => props.theme.shadow_black_fading};
     color: ${props => props.theme.text_white};
+    ${props => props.theme.dFlex('center', 'center', 'none')};
+    font-weight: 700;
     overflow: hidden;
     transition: ease-in-out 0.5s;
 
     @media ${device.mobile} {
         font-size: ${props => props.theme.size_text_l};
-        ${props => props.theme.dFlex('center', 'center', 'none')};
         height: 80%;
+    }
+    
+    @media ${device.tablet} {
+        font-size: ${props => props.theme.size_text_3xl};
+        width: 40%;
     }
 
     a {
@@ -54,11 +60,11 @@ export const TypeSelect = styled.div`
 `;
 
 export const Movie = styled.div`
+    background: ${props => props.theme.bg_main_fading};
+    color: ${props => props.theme.text_white};
     display: flex;
     margin-bottom: 20px;
     padding: 20px;
-    background: ${props => props.theme.bg_main_fading};
-    color: ${props => props.theme.text_white};
     font-size: 16px;
 
     @media ${device.mobile} {
@@ -66,6 +72,12 @@ export const Movie = styled.div`
         padding: 5px;
         height: 18rem;
         overflow: hidden;
+    }
+
+    @media ${device.tablet} {
+        flex-direction: column;
+        padding: 5px;
+        height: 50rem;
     }
 `;
 
@@ -81,6 +93,10 @@ export const Image = styled.img`
         height: 200px;
         border: none;
         margin-right: 0;
+    }
+
+    @media ${device.tablet} {
+        margin-bottom: 15px;
     }
 `;
 

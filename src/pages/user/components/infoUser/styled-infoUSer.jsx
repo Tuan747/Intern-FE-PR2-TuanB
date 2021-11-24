@@ -43,8 +43,13 @@ export const TabChangeContent = styled.ul`
         }
 
         @media ${device.mobile} {
+            font-size: ${props => props.theme.size_text_m};
             width: 50%;
-            font-size: 10px;
+        }
+
+        @media ${device.tablet} {
+            font-size: ${props => props.theme.size_text_l};
+            width: 50%;
         }
     }
 
@@ -98,6 +103,10 @@ export const TabItem = styled.div`
                 }
         }
     }
+
+    @media ${device.tablet} {
+        font-size: ${props => props.theme.size_text_l};
+    }
     
     span {
         display: block; 
@@ -134,6 +143,12 @@ export const TabItem = styled.div`
             width: 100%;
         }
 
+        @media ${device.tablet} {
+            font-size: ${props => props.theme.size_text_l};
+            padding: 5px 10px;
+            width: 100%;
+        }
+
         &:hover {
             background: ${props => props.theme.bg_white_fading};
         }
@@ -159,6 +174,14 @@ export const TabItem = styled.div`
                 padding: 10px;
                 height: auto;
                 text-align: center;
+            }
+
+            @media ${device.tablet} {
+                z-index: 1;
+                padding: 10px;
+                height: auto;
+                text-align: center;
+                right: 0;
             }
         }
 

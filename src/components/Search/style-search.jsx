@@ -12,6 +12,11 @@ export const Search = styled.div`
         justify-content: center;
     }
 
+    @media ${device.tablet} {
+        margin: 20px 0;
+        justify-content: center;
+    }
+
 `;
 
 export const Input = styled.input`
@@ -25,5 +30,11 @@ export const Input = styled.input`
         width: 50%;
         height: 100%;
         font-size: ${props => props.theme.size_text_m}
+    }
+
+    @media ${device.tablet} {
+        width: 50%;
+        height: 100%;
+        font-size: ${props => props.theme.size_text_l}
     }
 `;
