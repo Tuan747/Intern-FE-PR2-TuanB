@@ -15,6 +15,10 @@ export const ItemMovie = styled.div`
     @media ${device.mobile} {
         font-size: ${props => props.theme.size_text_m};
     }
+
+    @media ${device.tablet} {
+        font-size: ${props => props.theme.size_text_l};
+    }
 `;
 
 export const Image = styled.img`
@@ -28,6 +32,12 @@ export const Image = styled.img`
         height: 20rem;
         margin: 0 auto;
         display: block;
+    }
+
+    @media ${device.tablet} {
+        height: 50rem;
+        display: block;
+        margin: 0 auto;
     }
 `;
 
@@ -44,6 +54,11 @@ export const Title = styled.h1`
         font-size: ${props => props.theme.size_text_xl};
         text-align: center;
     }
+
+    @media ${device.tablet} {
+        font-size: ${props => props.theme.size_text_2xl};
+        text-align: center;
+    }
 `;
 
 export const Info = styled.div`
@@ -51,6 +66,10 @@ export const Info = styled.div`
     margin-top: 30px;
 
     @media ${device.mobile} {
+        justify-content: space-between
+    }
+
+    @media ${device.tablet} {
         justify-content: space-between
     }
 `;
@@ -63,6 +82,10 @@ export const InfoTitle = styled.h2`
     @media ${device.mobile} {
         font-size: ${props => props.theme.size_text_l};
     }
+
+    @media ${device.tablet} {
+        font-size: ${props => props.theme.size_text_xl};
+    }
 `;
 
 export const InfoContent = styled.div`
@@ -71,6 +94,11 @@ export const InfoContent = styled.div`
     border-radius: 20px 0 20px 0;
 
     @media ${device.mobile} {
+        font-size: ${props => props.theme.size_text_l};
+        padding: 7px 10px;
+    }
+
+    @media ${device.tablet} {
         font-size: ${props => props.theme.size_text_l};
         padding: 7px 10px;
     }
@@ -106,6 +134,13 @@ export const BtnTicket = styled.div`
     }
 
     @media ${device.mobile} {
+        position: static;
+        margin-top: 30px;
+        width: 100%;
+        height: 46px;
+    }
+
+    @media ${device.tablet} {
         position: static;
         margin-top: 30px;
         width: 100%;

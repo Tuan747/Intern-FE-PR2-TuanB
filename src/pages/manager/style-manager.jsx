@@ -22,6 +22,12 @@ export const TabContent = styled.ul`
         margin: 5px 0;
     }
 
+    @media ${device.tablet} {
+        ${props => props.theme.dFlex('center', 'center', 'none')};
+        border-radius: 5px;
+        margin: 5px 0;
+    }
+
     .admin__tab-active {
         background: ${props => props.theme.bg_yellow};
         color: ${props => props.theme.text_black};
@@ -42,12 +48,23 @@ export const TabItem = styled.li`
         text-align: center;
     }
 
+    @media ${device.tablet} {
+        font-size: ${props => props.theme.size_text_l};
+        padding: 25px 5px;
+        width: 25%;
+        text-align: center;
+    }
+
     svg {
         margin-right: 20px;
 
         @media ${device.mobile} {
             margin-right: 0;
-    }
+        }
+
+        @media ${device.tablet} {
+            margin-right: 0;
+        }
     }
     
     &:hover {

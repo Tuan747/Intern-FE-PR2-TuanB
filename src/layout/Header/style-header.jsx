@@ -9,4 +9,10 @@ export const Img = styled.img`
         margin: 0 auto;
         display: block;
     }
+
+    @media ${device.tablet} {
+        width: 50%;
+        margin: 0 auto;
+        display: block;
+    }
 `;

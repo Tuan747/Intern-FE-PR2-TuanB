@@ -51,8 +51,8 @@ export const theme = {
 const size = {
     mobile: '575px',
     mobileL: '767px',
-    tablet: '768px',
-    tabletL: '991px',
+    tablet: '676px',
+    tabletL: '768px',
     laptop: '992px',
     laptopL: '1199.98px',
     large: '1200px'

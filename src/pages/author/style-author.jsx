@@ -11,16 +11,33 @@ export const Author = styled.div`
         height: auto;
         padding: 5px 0;
     }
+
+    @media ${device.tablet} {
+        height: auto;
+        padding: 10px 0;
+        margin-top: 75px;
+    }
 `;
 
 export const Phone = styled.div`
     ${props => props.theme.dFlex('center', 'flex-end', 'none')}
+
+    img {
+        @media ${device.tablet} {
+            width: 20%;
+        }
+    }
+
     a {
         font-size: ${props => props.theme.size_text_4xl};
-        text-transform: uppercase;
         color: ${props => props.theme.text_orange} !important;
+        text-transform: uppercase;
         font-weight: 700;
         transition: ease-in-out .3s;
+
+        @media ${device.tablet} {
+            font-size: ${props => props.theme.size_text_xl};
+        }
 
         &:hover {
             color: ${props => props.theme.text_main} !important;
@@ -41,18 +58,27 @@ export const BtnAuthor = styled.div`
         @media ${device.mobile} {
             width: 20%;
         }
+
+        @media ${device.tablet} {
+            width: 20%;
+        }
     }
 
     span {
-        margin-left: 15px;
         font-size: ${props => props.theme.size_text_xl};
-        text-transform: uppercase;
         color: ${props => props.theme.text_main};
+        margin-left: 15px;
+        text-transform: uppercase;
         font-weight: 700;
         transition: ease-in-out .3s;
 
         @media ${device.mobile} {
             font-size: 9px;
+            margin-left: 5px;
+        }
+
+        @media ${device.tablet} {
+            font-size: ${props => props.theme.size_text_l};
             margin-left: 5px;
         }
 
@@ -65,8 +91,8 @@ export const BtnAuthor = styled.div`
 export const ModalItem = styled.div`
     margin-top: 20px;
     h5 {
-        font-size: 16px;
         color: ${props => props.theme.text_orange};
+        font-size: 16px;
     }
     input {
         font-size: 16px;
@@ -86,13 +112,13 @@ export const ModalItem = styled.div`
 `;
 
 export const FormInput = styled.form`
-    height: 100%;
     ${props => props.theme.dFlex("none", "center", "column")};
+    height: 100%;
 
     h5 {
+        color: ${props => props.theme.text_orange};
         text-align: center;
         font-size: 25px;
-        color: ${props => props.theme.text_orange};
     }
 
     input {
@@ -109,7 +135,7 @@ export const FormInput = styled.form`
 `;
 
 export const ErrorMessage = styled.div`
-    font-size: 12px;
     color: ${props => props.theme.text_error};
+    font-size: ${props => props.theme.size_text_l};
     margin-left: 5px;
 `;
